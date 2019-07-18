@@ -13,11 +13,11 @@ import Controller.Observer;
  */
 
 
-public class Observable {
+public interface Observable {
     
-    public void registerObserver(Observer observer);
+  Boolean registerObserver(Observer observer);
     
-    public void removeObserver(Observer observer);
+  Boolean removeObserver(Observer observer);
     
-    public void notifyObserver();
+    void notifyObserver();
 }
