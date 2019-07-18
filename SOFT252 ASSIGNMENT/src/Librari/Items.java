@@ -9,13 +9,13 @@ package Librari;
  *
  * @author amarcu
  */
-public class Books {
+public class Items {
     private int id;
     private String title;
     private int category;
     private float userRating;
     
-    private Books(int idNum, String name, int type){
+    private Items(int idNum, String name, int type){
         id=idNum;
         title = name;
         category = type;

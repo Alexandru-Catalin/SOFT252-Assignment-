@@ -11,5 +11,5 @@ package Controller;
  */
 public interface Observer {
     
-    public void Update(int id);
+    void update();
 }
