@@ -4,18 +4,18 @@
  * and open the template in the editor.
  */
 package Librari;
-
+import Controller.Observer;
 /**
  *
  * @author amarcu
  */
 public class Items {
-    private int id;
+    int id;
     private String title;
     private int category;
     private float userRating;
     
-    private Items(int idNum, String name, int type){
+    Items(int idNum, String name, int type){
         id=idNum;
         title = name;
         category = type;

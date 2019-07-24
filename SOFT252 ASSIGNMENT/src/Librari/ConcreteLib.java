@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Librari;
+import Controller.Observable;
 import Controller.Observer;
 import java.util.ArrayList;
 /**

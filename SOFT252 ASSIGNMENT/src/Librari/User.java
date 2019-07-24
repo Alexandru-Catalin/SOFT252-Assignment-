@@ -11,7 +11,7 @@ import Controller.Observer;
  * @author amarcu
  */
 public abstract class User implements Observer {
-    int id;
+    private int id;
     private String password;
     //private List<Books> borrowBooks;
     private String firstName;
