@@ -13,7 +13,6 @@ import Controller.Observer;
 public abstract class User implements Observer {
     private int id;
     private String password;
-    //private List<Books> borrowBooks;
     private String firstName;
     private String lastName;
     

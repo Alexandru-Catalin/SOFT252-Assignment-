@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Librari;
-import Controller.Observer;
 /**
  *
  * @author amarcu

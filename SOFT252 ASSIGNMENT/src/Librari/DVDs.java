@@ -3,22 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main;
+package Librari;
 
 /**
  *
  * @author amarcu
  */
-public class SOFT252ASSIGNMENT {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-        
-        
+public class DVDs extends Items{
+    
+    public DVDs (int idNum, String name, int type)
+    {
+        super(idNum, name, type);
     }
     
 }

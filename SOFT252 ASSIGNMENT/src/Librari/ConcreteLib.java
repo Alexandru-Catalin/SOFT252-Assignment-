@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author amarcu
  */
-public class ConcreteLib implements Observable{
+public abstract class ConcreteLib implements Observable{
     
     private ArrayList<Observer> observers = new ArrayList<Observer>();
     
@@ -19,6 +19,16 @@ public class ConcreteLib implements Observable{
     public void registerObserver(Observer observer){
     observer.Update(id);
     observers.add(observer);
+    }
+
+    @Override
+    public Boolean removeObserver(Observer observer) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void notifyObserver() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
