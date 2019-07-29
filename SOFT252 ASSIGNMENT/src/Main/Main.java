@@ -9,7 +9,7 @@ package Main;
  *
  * @author amarcu
  */
-public class SOFT252ASSIGNMENT {
+public class Main {
 
     /**
      * @param args the command line arguments

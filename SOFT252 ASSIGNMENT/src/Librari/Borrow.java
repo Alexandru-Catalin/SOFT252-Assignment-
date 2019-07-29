@@ -21,7 +21,7 @@ public class Borrow {
     private Boolean overdueDate;
     private int extension;
     
-    private Borrow()
+    Borrow()
     {
         this.isBorrowed = false;
         this.userId = null;
@@ -108,11 +108,19 @@ public class Borrow {
         this.extension = 0;
     }
     
+    public void checkOverdue(LocalDate currentDate)
+    {
+        if(returnDate.isBefore(currentDate))
+        {
+            overdueDate = true;
+        }
+    }
+    
     public void returnDate()
     {
         if(overdueDate == true)
         {
-            System.out.println("Item cannot be returned until you pay the tax.");
+            java.lang.System.out.println("Item cannot be returned until you pay the tax.");
         }
         else
         {

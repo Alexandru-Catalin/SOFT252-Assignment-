@@ -4,11 +4,15 @@
  * and open the template in the editor.
  */
 package Librari;
+
+import Controller.State;
+
 /**
  *
  * @author amarcu
  */
 public class Items {
+    private State state;
     int id;
     private String title;
     private int category;
@@ -50,5 +54,21 @@ public class Items {
     
     public void setUserRating(float userRating){
         this.userRating = userRating;
+    }
+
+     public State getState() {
+        return state;
+    }
+    
+    public void setState(State aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void BorrowItem(){
+        state.BorrowItem(this);
+    }
+    
+    public void ReturnState(){
+        state.ReturnItem(this);
     }
 }
