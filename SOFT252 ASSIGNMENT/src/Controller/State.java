@@ -6,6 +6,7 @@
 package Controller;
 
 import Librari.Items;
+import com.sun.security.ntlm.Client;
 
 /**
  *
@@ -13,7 +14,12 @@ import Librari.Items;
  */
 public interface State {
     
-    public void BorrowItem(Items i);
+    public void BorrowItem(Items i, Client c, int length);
+
+    /**
+     *
+     * @param i
+     */
     public void ReturnItem(Items i);
     public void printState();
 

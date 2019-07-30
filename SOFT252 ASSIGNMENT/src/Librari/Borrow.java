@@ -20,6 +20,7 @@ public class Borrow {
     private LocalDate returnDate;
     private Boolean overdueDate;
     private int extension;
+    private float overdueTaxes;
     
     Borrow()
     {
@@ -27,6 +28,7 @@ public class Borrow {
         this.userId = null;
         this.overdueDate = false;
         this.extension = 0;
+        this.overdueTaxes = 0f;
     }
 
     public Boolean getIsBorrowed() {
@@ -113,6 +115,9 @@ public class Borrow {
         if(returnDate.isBefore(currentDate))
         {
             overdueDate = true;
+            int i = returnDate.compareTo(currentDate);
+            Math.abs(i);
+            overdueTaxes = i * 10;
         }
     }
     
@@ -131,4 +136,23 @@ public class Borrow {
             extension = 0;
         }
     }
+
+    public int getExtension() {
+        return extension;
+    }
+
+    public void setExtension(int extension) {
+        this.extension = extension;
+    }
+
+    public float getOverdueTaxes() {
+        return overdueTaxes;
+    }
+
+    public void setOverdueTaxes(float overdueTaxes) {
+        this.overdueTaxes = overdueTaxes;
+    }
+    
+    
+    
 }

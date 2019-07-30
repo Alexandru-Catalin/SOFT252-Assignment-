@@ -6,6 +6,7 @@
 package Librari;
 
 import Controller.State;
+import com.sun.security.ntlm.Client;
 
 /**
  *
@@ -17,11 +18,13 @@ public class Items {
     private String title;
     private int category;
     private float userRating;
+    private Borrow borrowInf;
     
     Items(int idNum, String name, int type){
         id=idNum;
         title = name;
         category = type;
+        borrowInf = new Borrow();
     }
     
     public int getId(){
@@ -64,8 +67,8 @@ public class Items {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void BorrowItem(){
-        state.BorrowItem(this);
+    public void BorrowItem(Client c, int length){
+        state.BorrowItem(this, c, length);
     }
     
     public void ReturnState(){

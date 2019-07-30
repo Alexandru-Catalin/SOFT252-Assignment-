@@ -6,6 +6,7 @@
 package Librari;
 
 import Controller.State;
+import com.sun.security.ntlm.Client;
 /**
  *
  * @author amarcu
@@ -13,7 +14,7 @@ import Controller.State;
 public class BorrowingState implements State{
 
     @Override
-    public void BorrowItem(Items i) {
+    public void BorrowItem(Items i, Client c, int length) {
         i.setState(this);
     }
 
