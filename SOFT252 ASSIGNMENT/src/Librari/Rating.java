@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author amarcu
  */
-public class Rating {
+public class Rating{
     
     private float rating;
     private ArrayList<UserRating> userRating;

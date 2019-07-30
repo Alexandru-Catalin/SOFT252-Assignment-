@@ -7,12 +7,13 @@ package Librari;
 
 import Controller.State;
 import com.sun.security.ntlm.Client;
+import java.io.Serializable;
 
 /**
  *
  * @author amarcu
  */
-public class Items {
+public class Items implements Serializable{
     private State state;
     int id;
     private String title;

@@ -5,11 +5,13 @@
  */
 package Librari;
 
+import java.io.Serializable;
+
 /**
  *
  * @author amarcu
  */
-public class UserRating {
+public class UserRating implements Serializable{
     
     private String userID;
     private int userRating;

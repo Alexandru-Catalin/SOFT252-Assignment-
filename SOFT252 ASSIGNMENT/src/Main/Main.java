@@ -5,6 +5,9 @@
  */
 package Main;
 
+import Librari.Books;
+import Librari.Seriliaser;
+
 /**
  *
  * @author amarcu
@@ -16,6 +19,10 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Books b = new Books(10, "Test", 1);
+        System.out.println(b.getTitle());
+        Seriliaser serialiser = new Seriliaser ("test.ser");
+        serialiser.writeList(b);
         
         
         

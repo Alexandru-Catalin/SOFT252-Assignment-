@@ -5,12 +5,13 @@
  */
 package Librari;
 import Controller.Observer;
+import java.io.Serializable;
 
 /**
  *
  * @author amarcu
  */
-public abstract class User implements Observer {
+public abstract class User implements Observer, Serializable {
     private int id;
     private String password;
     private String firstName;

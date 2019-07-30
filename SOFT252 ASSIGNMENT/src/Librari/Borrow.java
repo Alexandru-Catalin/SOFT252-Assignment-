@@ -5,13 +5,14 @@
  */
 package Librari;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author amarcu
  */
-public class Borrow {
+public class Borrow implements Serializable{
     
     private Boolean isBorrowed = false;
     private String userId;
