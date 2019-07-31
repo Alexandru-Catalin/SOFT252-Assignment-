@@ -23,9 +23,6 @@ public class Main {
         System.out.println(b.getTitle());
         Seriliaser serialiser = new Seriliaser ("test.ser");
         serialiser.writeList(b);
-        
-        
-        
     }
     
 }
