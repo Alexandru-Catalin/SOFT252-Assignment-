@@ -23,7 +23,7 @@ public class Borrow implements Serializable{
     private int extension;
     private float overdueTaxes;
     
-    Borrow()
+    public Borrow()
     {
         this.isBorrowed = false;
         this.userId = null;

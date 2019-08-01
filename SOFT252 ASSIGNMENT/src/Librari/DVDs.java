@@ -5,15 +5,18 @@
  */
 package Librari;
 
+import Controller.State;
+
 /**
  *
  * @author amarcu
  */
 public class DVDs extends Items{
     
-    public DVDs (int idNum, String name, int type)
-    {
-        super(idNum, name, type);
+    public DVDs(int idNum, String name, int type, State state) {
+        super(idNum, name, type, state);
     }
+    
+
     
 }

@@ -5,7 +5,9 @@
  */
 package Main;
 
+import Controller.State;
 import Librari.Books;
+import Librari.ReturnState;
 import Librari.Seriliaser;
 
 /**
@@ -19,7 +21,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Books b = new Books(10, "Test", 1);
+        State state = new ReturnState();
+        Books b = new Books(10, "Test", 1, state);
         System.out.println(b.getTitle());
         Seriliaser serialiser = new Seriliaser ("test.ser");
         serialiser.writeList(b);

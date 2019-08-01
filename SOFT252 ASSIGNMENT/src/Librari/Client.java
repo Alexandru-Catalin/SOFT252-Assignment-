@@ -9,9 +9,9 @@ package Librari;
  *
  * @author amarcu
  */
-public class Clients extends User {
+public class Client extends User {
     
-    public Clients(int id, String password, String firstName, String lastName){
+    public Client(int id, String password, String firstName, String lastName){
         super(id, password, firstName, lastName);
     } 
     

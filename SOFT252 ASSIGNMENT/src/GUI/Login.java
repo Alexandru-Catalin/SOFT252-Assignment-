@@ -17,12 +17,12 @@ public class Login extends javax.swing.JFrame {
      * Creates new form GUI
      */
     
-    private ClientLibrari clientUi;
+    private ClientMenu clientUi;
     
     public Login() {
         initComponents();
         
-        clientUi = new ClientLibrari();
+        clientUi = new ClientMenu();
     }
 
     /**
@@ -173,12 +173,12 @@ public class Login extends javax.swing.JFrame {
             }
             else
             {
-                JOptionPane.showMessageDialog(this, "UserId or password are wrong, please try again later.");
+                JOptionPane.showMessageDialog(this, "Incorrect password.");
             }
         }
         else
         {
-            JOptionPane.showMessageDialog(this, "UserID or password are wrong, please try again later.");
+            JOptionPane.showMessageDialog(this, "UserID does not exist.");
         }
     }//GEN-LAST:event_LoginActionPerformed
     
