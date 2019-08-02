@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Borrow implements Serializable{
     
     private Boolean isBorrowed = false;
-    private String userId;
+    private int userId;
     private int borrowLength;
     private LocalDate startDate;
     private LocalDate returnDate;
@@ -26,7 +26,7 @@ public class Borrow implements Serializable{
     public Borrow()
     {
         this.isBorrowed = false;
-        this.userId = null;
+        this.userId = -1;
         this.overdueDate = false;
         this.extension = 0;
         this.overdueTaxes = 0f;
@@ -40,11 +40,11 @@ public class Borrow implements Serializable{
         this.isBorrowed = isBorrowed;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -89,7 +89,7 @@ public class Borrow implements Serializable{
     }
     
     
-    public void userBorrow(String userID, int borrowingTime)
+    public void userBorrow(int userID, int borrowingTime)
     {
         int borrowDate;
         
@@ -131,7 +131,7 @@ public class Borrow implements Serializable{
         else
         {
             isBorrowed = false;
-            userId = null;
+            userId = -1;
             startDate = null;
             returnDate = null;
             extension = 0;

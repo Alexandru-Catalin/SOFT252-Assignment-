@@ -22,13 +22,23 @@ public class Items implements Serializable{
     private Borrow borrowInf;
 
     
-    Items(int idNum, String name, int type, State state){
+    public Items(int idNum, String name, int type, State state){
         id=idNum;
         title = name;
         category = type;
         borrowInf = new Borrow();
         this.state = state;
     }
+
+    public Borrow getBorrowInf() {
+        return borrowInf;
+    }
+
+    public void setBorrowInf(Borrow borrowInf) {
+        this.borrowInf = borrowInf;
+    }
+    
+    
     
     public int getId(){
         return id;

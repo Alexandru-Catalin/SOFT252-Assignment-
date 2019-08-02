@@ -21,6 +21,8 @@ public class BorrowingState implements State{
     @Override
     public void ReturnItem(Items i) {
         i.setState(new ReturnState());
+        i.getBorrowInf().returnDate();
+        
     }
 
     @Override

@@ -15,12 +15,14 @@ import Controller.State;
 public class ReturnState implements State{
 
     @Override
-    public void BorrowItem(Items i, Client c, int length) {
-        
-        
+    public void BorrowItem(Items i, Client c, int length) 
+    {
         i.setState(new BorrowingState());
+        i.getBorrowInf();
+        i.getBorrowInf().userBorrow(c.getId(), length);
     }
 
+    
     @Override
     public void ReturnItem(Items i) {
         i.setState(this);
