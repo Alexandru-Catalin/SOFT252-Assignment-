@@ -19,6 +19,13 @@ public class Rating{
     public Rating() {
         this.userRating = new ArrayList<UserRating>();
     }
+
+    public Rating(float rating, ArrayList<UserRating> userRating) {
+        this.rating = rating;
+        this.userRating = userRating;
+    }
+    
+    
     
     public float getAverageRating(){
     
@@ -50,11 +57,10 @@ public class Rating{
         this.userRating = userRating;
     }
     
-    public void addUserRating(int userVote, String userId)
-    {
-        UserRating u = new UserRating(userId, userVote);
-        
-        userRating.add(u);
+    
+
+    public void setRating(float rating) {
+        this.rating = rating;
     }
     
     public void updateUserRating()

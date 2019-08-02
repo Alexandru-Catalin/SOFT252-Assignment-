@@ -13,19 +13,20 @@ import java.io.Serializable;
  */
 public class UserRating implements Serializable{
     
-    private String userID;
+    private int userID;
     private int userRating;
 
-    public UserRating(String userID, int userRating) {
+    public UserRating(int userID, int userRating) {
         this.userID = userID;
         this.userRating = userRating;
     }
 
-    public String getUserID() {
+    
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 

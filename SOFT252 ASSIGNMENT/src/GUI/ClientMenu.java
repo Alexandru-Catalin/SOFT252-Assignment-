@@ -30,18 +30,28 @@ public class ClientMenu extends javax.swing.JFrame {
     private ArrayList<Items> chartList;
     private ArrayList<Items> returnList;
     private Client c;
-     private ButtonGroup bg = new ButtonGroup();
+    private ButtonGroup bg = new ButtonGroup();
+    private ButtonGroup rb = new ButtonGroup();
+    
     
     private void groupButton(){
         bg.add(jRad1);
         bg.add(jRad2);
-
+    }
+    
+    private void rateButton(){
+        rb.add(jRB1);
+        rb.add(jRB2);
+        rb.add(jRB3);
+        rb.add(jRB4);
+        rb.add(jRB5);
     }
     
     public ClientMenu() {
           
         initComponents(); 
         groupButton();
+        rateButton();
         this.itemList = new ArrayList<Items>();
         this.borrowList = new ArrayList<Items>();
         this.chartList = new ArrayList<Items>();
@@ -50,12 +60,13 @@ public class ClientMenu extends javax.swing.JFrame {
         c = new Client(1, "", "", "");
         
         State state = new ReturnState();
+        float rating = 0f;
         
         String itemData = "";
-        Books a = new Books(0,"Book1",0, state);
-        Books s = new Books(1,"Book2",0,state);
-        Books d = new Books(2,"Book3",0,state);
-        Books f = new Books(3,"Book4",0,state);
+        Books a = new Books(0,"Book1",0, state, rating);
+        Books s = new Books(1,"Book2",0,state, rating);
+        Books d = new Books(2,"Book3",0,state, rating);
+        Books f = new Books(3,"Book4",0,state, rating);
         
         itemList.add(a);
         itemList.add(s);
@@ -64,7 +75,7 @@ public class ClientMenu extends javax.swing.JFrame {
         
         for (Items i : itemList){
             
-            itemData += i.getId() + i.getTitle() + " " + i.getBorrowInf().getReturnDate() + "\n";
+            itemData += i.getId() + i.getTitle() + " " + i.getBorrowInf().getReturnDate() + " " + rating + "Stars" + "\n";
             
         }
                         
@@ -130,7 +141,13 @@ public class ClientMenu extends javax.swing.JFrame {
         jRad2 = new javax.swing.JRadioButton();
         jTaxField = new javax.swing.JTextField();
         taxField = new java.awt.Label();
+        jRB1 = new javax.swing.JRadioButton();
+        jRB2 = new javax.swing.JRadioButton();
+        jRB3 = new javax.swing.JRadioButton();
+        jRB4 = new javax.swing.JRadioButton();
+        jRB5 = new javax.swing.JRadioButton();
         WELCOME = new java.awt.Label();
+        jLogOut = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -237,6 +254,21 @@ public class ClientMenu extends javax.swing.JFrame {
 
         taxField.setText("£");
 
+        jRB1.setText("1 Star");
+
+        jRB2.setText("2 Stars");
+        jRB2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRB2ActionPerformed(evt);
+            }
+        });
+
+        jRB3.setText("3 Stars");
+
+        jRB4.setText("4 Stars");
+
+        jRB5.setText("5 Stars");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -251,14 +283,22 @@ public class ClientMenu extends javax.swing.JFrame {
                                 .addComponent(jSearchItem, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jSearchButton))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRB1)
+                                    .addComponent(jRB2)
+                                    .addComponent(jRB3)
+                                    .addComponent(jRB4)
+                                    .addComponent(jRB5)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jReturnItem, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jItemButton))
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane4)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -339,9 +379,22 @@ public class ClientMenu extends javax.swing.JFrame {
                             .addComponent(taxField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3))
-                .addGap(39, 39, 39)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jRB1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRB2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRB3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRB4)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jRB5))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -353,7 +406,7 @@ public class ClientMenu extends javax.swing.JFrame {
                             .addComponent(jRequest))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jResources)
                             .addComponent(jResReq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -365,24 +418,35 @@ public class ClientMenu extends javax.swing.JFrame {
 
         WELCOME.setText("WELCOME");
 
+        jLogOut.setText("Log Out");
+        jLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLogOutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(275, 275, 275)
-                .addComponent(WELCOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(354, 354, 354)
+                .addComponent(WELCOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLogOut))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(WELCOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(WELCOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLogOut))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -487,6 +551,30 @@ public class ClientMenu extends javax.swing.JFrame {
         {
             if (Integer.parseInt(jReturnItem.getText()) == i.getId()) 
             { 
+               
+                if (jRB1.isSelected() == true)
+                {
+                    i.addUserRating(0, c.getId());
+                    System.out.println("1");
+                } 
+                else if(jRB2.isSelected() == true){
+                    i.addUserRating(1, c.getId());
+                    System.out.println("2");
+                }
+                else if (jRB3.isSelected() == true){
+                    i.addUserRating(2, c.getId());
+                    System.out.println("3");
+                }
+                else if(jRB4.isSelected()== true){
+                    i.addUserRating(3, c.getId());
+                    System.out.println("4");
+                }
+                else{
+                    i.addUserRating(4, c.getId());
+                    System.out.println("5");
+                }
+                
+                i.getRating();
                 i.BorrowItem(c, 0);
                 returnList.add(i);
             }
@@ -498,10 +586,9 @@ public class ClientMenu extends javax.swing.JFrame {
         float totalTax = 0f;
         for (Items i : returnList)
         {            
-            returnData += i.getId() + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate() +"\n";            
+            returnData += i.getId() + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate() + " " + i.searchUserRating(c.getId()) + "Stars" +"\n";            
             totalTax = i.getBorrowInf().getOverdueTaxes();
         }
-        
         String taxes = totalTax + " ";
         jTaxField.setText(taxes);
         jReturnField.setText(returnData);
@@ -572,6 +659,15 @@ public class ClientMenu extends javax.swing.JFrame {
             }
         
         }
+        
+        String refresh = "";
+        for (Items i : itemList){
+            
+            refresh += i.getId() + i.getTitle() + " " + i.getBorrowInf().getReturnDate() + " " + i.getRating() + "Stars" + "\n";
+            
+        }
+                        
+        jSearch.setText(refresh);
         jClientItems.setText(returnData);
         
         jBorrowList.setText("");
@@ -586,6 +682,14 @@ public class ClientMenu extends javax.swing.JFrame {
     private void jResourcesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jResourcesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jResourcesActionPerformed
+
+    private void jRB2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRB2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRB2ActionPerformed
+
+    private void jLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogOutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLogOutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -634,7 +738,13 @@ public class ClientMenu extends javax.swing.JFrame {
     private javax.swing.JTextArea jClientItems2;
     private javax.swing.JTextField jExtension;
     private javax.swing.JButton jItemButton;
+    private javax.swing.JButton jLogOut;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRB1;
+    private javax.swing.JRadioButton jRB2;
+    private javax.swing.JRadioButton jRB3;
+    private javax.swing.JRadioButton jRB4;
+    private javax.swing.JRadioButton jRB5;
     private javax.swing.JRadioButton jRad1;
     private javax.swing.JRadioButton jRad2;
     private javax.swing.JButton jRequest;

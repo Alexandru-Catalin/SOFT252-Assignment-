@@ -23,23 +23,29 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="275" max="-2" attributes="0"/>
-              <Component id="WELCOME" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="354" max="-2" attributes="0"/>
+              <Component id="WELCOME" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLogOut" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="WELCOME" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="WELCOME" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jLogOut" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -64,7 +70,17 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jSearchButton" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane2" alignment="0" min="-2" pref="289" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jScrollPane2" min="-2" pref="289" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jRB1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jRB2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jRB3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jRB4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jRB5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jReturnItem" min="-2" pref="129" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -73,7 +89,7 @@
                               <Component id="jScrollPane6" alignment="0" min="-2" pref="279" max="-2" attributes="0"/>
                               <Component id="jScrollPane5" alignment="0" min="-2" pref="289" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="148" max="32767" attributes="0"/>
+                          <EmptySpace pref="87" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jScrollPane4" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
@@ -180,10 +196,26 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jScrollPane2" pref="163" max="32767" attributes="0"/>
-                      <Component id="jScrollPane3" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="jRB1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jRB2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jRB3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jRB4" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jRB5" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jScrollPane2" min="-2" pref="192" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="label5" min="-2" max="-2" attributes="0"/>
                       <Component id="label6" min="-2" max="-2" attributes="0"/>
@@ -198,7 +230,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="22" max="32767" attributes="0"/>
+                          <EmptySpace pref="25" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jResources" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jResReq" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -422,12 +454,48 @@
             <Property name="text" type="java.lang.String" value="&#xa3;"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JRadioButton" name="jRB1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="1 Star"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRB2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="2 Stars"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRB2ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRB3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="3 Stars"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRB4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="4 Stars"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRB5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="5 Stars"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="java.awt.Label" name="WELCOME">
       <Properties>
         <Property name="text" type="java.lang.String" value="WELCOME"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jLogOut">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Log Out"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jLogOutActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
