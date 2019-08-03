@@ -5,6 +5,9 @@
  */
 package GUI;
 
+import Librari.Client;
+import Librari.Message;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,13 +21,28 @@ public class Login extends javax.swing.JFrame {
      */
     
     private ClientMenu clientUi;
+    private AdminMenu adminUi;
+    private ArrayList<Message> adminMessage;
     
     public Login() {
         initComponents();
         
-        clientUi = new ClientMenu();
+        clientUi = new ClientMenu(this);
+        adminUi = new AdminMenu(this);
+        this.adminMessage = new ArrayList<Message>();
     }
 
+    public ArrayList<Message> getAdminMessage() {
+        return adminMessage;
+    }
+
+    public void setAdminMessage(ArrayList<Message> adminMessage) {
+        this.adminMessage = adminMessage;
+    }
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -154,10 +172,14 @@ public class Login extends javax.swing.JFrame {
         jUserId.getText();
         jPass.getPassword();
         
-        String userId = "Corvus";
-        String passWord = "Corax";
+        String clientId = "Corvus";
+        String clientPass = "Corax";
+        String adminId = "Vulturul";
+        String adminPass = "Vulturul";
         
-        if(userId.equals(jUserId.getText()))
+        Client c = new Client(1, "Corax", "Corvus", "");
+        
+        if(clientId.equals(jUserId.getText()))
         {
             String testPass = "";
             for (int i = 0; i < jPass.getPassword().length; i++) 
@@ -165,21 +187,42 @@ public class Login extends javax.swing.JFrame {
                 testPass += jPass.getPassword()[i];
             }
             
-            if(passWord.equals(testPass))
+            if(clientPass.equals(testPass))
             {
                JOptionPane.showMessageDialog(this, "Welcome!");
                this.setVisible(false);
                clientUi.setVisible(true);
+               clientUi.setClient(c);
+               clientUi.setAdminList(adminMessage);
+               return;
             }
             else
             {
                 JOptionPane.showMessageDialog(this, "Incorrect password.");
             }
         }
-        else
+        
+          if(adminId.equals(jUserId.getText()))
         {
-            JOptionPane.showMessageDialog(this, "UserID does not exist.");
-        }
+            String testPass = "";
+            for (int i = 0; i < jPass.getPassword().length; i++) 
+            {
+                testPass += jPass.getPassword()[i];
+            }
+            
+            if(adminPass.equals(testPass))
+            {
+               JOptionPane.showMessageDialog(this, "Welcome!");
+               this.setVisible(false);
+               adminUi.setVisible(true);
+               adminUi.setAdminMessage(adminMessage);
+               return;
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Incorrect password.");
+            }
+        }        
     }//GEN-LAST:event_LoginActionPerformed
     
     private void jRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegisterActionPerformed

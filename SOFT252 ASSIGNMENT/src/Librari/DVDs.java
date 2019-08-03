@@ -13,8 +13,8 @@ import Controller.State;
  */
 public class DVDs extends Items{
     
-    public DVDs(int idNum, String name, int type, State state, float rating) {
-        super(idNum, name, type, state, rating);
+    public DVDs(int idNum, String name, int type, State state, float rating, int extension) {
+        super(idNum, name, type, state, rating, extension);
     }
     
 

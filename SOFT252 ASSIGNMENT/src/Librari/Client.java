@@ -5,15 +5,30 @@
  */
 package Librari;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author amarcu
  */
 public class Client extends User {
     
+      private ArrayList<Message> clientMessage;
+    
     public Client(int id, String password, String firstName, String lastName){
         super(id, password, firstName, lastName);
+        this.clientMessage = new ArrayList<Message>();
     } 
+
+    public ArrayList<Message> getClientMessage() {
+        return clientMessage;
+    }
+
+    public void setClientMessage(ArrayList<Message> clientMessage) {
+        this.clientMessage = clientMessage;
+    }
+    
+    
     
     @Override
     public void update() {

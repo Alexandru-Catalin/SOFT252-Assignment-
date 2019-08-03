@@ -22,8 +22,9 @@ public class Items implements Serializable{
     private Borrow borrowInf;
     private float rating;
     private ArrayList<UserRating> userRating;
+    private int extension;
     
-    public Items(int idNum, String name, int type, State state, float rating){
+    public Items(int idNum, String name, int type, State state, float rating, int extensionPeriod){
         id=idNum;
         title = name;
         category = type;
@@ -31,8 +32,19 @@ public class Items implements Serializable{
         this.state = state;
         rating = 0;
         userRating = new ArrayList<>();
+        extension = 0;
     }
 
+    public int getExtension() {
+        return extension;
+    }
+
+    public void setExtension(int extension) {
+        this.extension = extension;
+    }
+
+   
+    
     public Borrow getBorrowInf() {
         return borrowInf;
     }
@@ -132,6 +144,21 @@ public class Items implements Serializable{
         }
         
         rating = averageRating / userRating.size();
+    }
+    
+    public void addExtension(int userId, int userExtension){
+        
+        int extensionVote;
+        
+        if (userExtension == 0) 
+        {
+            extensionVote = 14;
+        }
+        else
+        {
+            extensionVote = 31;
+        }   
+        extension = extensionVote;
     }
     
     public int searchUserRating(int id)

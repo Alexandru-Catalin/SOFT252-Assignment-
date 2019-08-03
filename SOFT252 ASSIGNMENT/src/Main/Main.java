@@ -22,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         State state = new ReturnState();
-        Books b = new Books(10, "Test", 1, state, 0);
+        Books b = new Books(10, "Test", 1, state, 0, 0);
         System.out.println(b.getTitle());
         Seriliaser serialiser = new Seriliaser ("test.ser");
         serialiser.writeList(b);
