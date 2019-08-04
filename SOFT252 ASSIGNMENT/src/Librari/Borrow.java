@@ -89,6 +89,22 @@ public class Borrow implements Serializable{
     }
     
     
+    public void extensionAdd(int userID, int borrowingTime){
+        int extension;
+        
+        this.userId = userID;
+        
+        if(borrowingTime == 0){
+            extension = 14;
+        }
+        else
+        {
+            extension = 31;
+        }
+        
+        this.returnDate = returnDate.plusDays(extension);
+    }
+    
     public void userBorrow(int userID, int borrowingTime)
     {
         int borrowDate;

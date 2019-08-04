@@ -5,7 +5,9 @@
  */
 package GUI;
 
+import Librari.Items;
 import Librari.Message;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 
@@ -21,6 +23,8 @@ public class AdminMenu extends javax.swing.JFrame {
     private Login loginUi;
     private ArrayList<Message> adminMessage;
     private ButtonGroup bg = new ButtonGroup();
+    private ArrayList<Items> itemList;
+    private ArrayList<Items> infoList;
     
     private void groupButton(){
         bg.add(jRad1);
@@ -33,10 +37,19 @@ public class AdminMenu extends javax.swing.JFrame {
         initComponents();
         groupButton();
         this.loginUi = l;
-        
-        
+        this.infoList = new ArrayList<Items>();
     }
 
+    public ArrayList<Items> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(ArrayList<Items> itemList) {
+        this.itemList = itemList;
+    }
+
+    
+    
     public ArrayList<Message> getAdminMessage() {
         return adminMessage;
     }
@@ -67,8 +80,8 @@ public class AdminMenu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jAccept = new javax.swing.JButton();
+        jReject = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jExtensionRequest = new javax.swing.JTextArea();
         jUserId = new javax.swing.JTextField();
@@ -77,6 +90,8 @@ public class AdminMenu extends javax.swing.JFrame {
         label5 = new java.awt.Label();
         jRad1 = new javax.swing.JRadioButton();
         jRad2 = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jInfo = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         label2 = new java.awt.Label();
@@ -92,17 +107,17 @@ public class AdminMenu extends javax.swing.JFrame {
 
         jTabbedPane1.setToolTipText("");
 
-        jButton1.setText("Accept");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jAccept.setText("Accept");
+        jAccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jAcceptActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Reject");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jReject.setText("Reject");
+        jReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jRejectActionPerformed(evt);
             }
         });
 
@@ -125,6 +140,11 @@ public class AdminMenu extends javax.swing.JFrame {
 
         jRad2.setText("1 Months Extension");
 
+        jInfo.setEditable(false);
+        jInfo.setColumns(20);
+        jInfo.setRows(5);
+        jScrollPane1.setViewportView(jInfo);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -134,21 +154,25 @@ public class AdminMenu extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBookId, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRad1)
-                            .addComponent(jRad2))))
-                .addContainerGap(121, Short.MAX_VALUE))
+                            .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jAccept)
+                                .addGap(18, 18, 18)
+                                .addComponent(jReject))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jBookId, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRad1)
+                                    .addComponent(jRad2))))
+                        .addGap(0, 132, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,10 +193,14 @@ public class AdminMenu extends javax.swing.JFrame {
                             .addComponent(jRad2))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1)))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jReject)
+                            .addComponent(jAccept))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Extensions Requests", jPanel4);
@@ -205,7 +233,7 @@ public class AdminMenu extends javax.swing.JFrame {
                             .addComponent(jTextField1)
                             .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 316, Short.MAX_VALUE)
+                                .addGap(0, 337, Short.MAX_VALUE)
                                 .addComponent(jButton3)))))
                 .addContainerGap())
         );
@@ -257,7 +285,6 @@ public class AdminMenu extends javax.swing.JFrame {
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("Request");
-        jTabbedPane1.getAccessibleContext().setAccessibleDescription("");
 
         jLogOut.setText("LogOut");
         jLogOut.addActionListener(new java.awt.event.ActionListener() {
@@ -293,13 +320,66 @@ public class AdminMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRejectActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        jUserId.getText();
+        jBookId.getText();
+        
+        String clientId = "";
+        String bookId = "";
+        
+        for (Items i : itemList)
+        {
+            if(Integer.parseInt(jBookId.getText()) == i.getId())
+            {   
+                if(Integer.parseInt(jUserId.getText()) == i.getBorrowInf().getUserId())
+                {
+                    System.out.println("Rejected");
+                }
+            }
+        }
+        
+    }//GEN-LAST:event_jRejectActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAcceptActionPerformed
+      
+        jUserId.getText();
+        jBookId.getText();
+        
+        String clientId = "";
+        String bookId = "";
+        
+        for (Items i : itemList)
+        {
+            if(Integer.parseInt(jBookId.getText()) == i.getId())
+            {   
+                if(Integer.parseInt(jUserId.getText()) == i.getBorrowInf().getUserId())
+                {
+                    if (jRad1.isSelected() == true)
+                    {
+                        i.getBorrowInf().extensionAdd(i.getId(), 0);
+                        System.out.println("2W");
+                    }
+                    else
+                    {
+                        i.getBorrowInf().extensionAdd(i.getId(), 1);
+                        System.out.println("1M");
+                    }
+                    
+                    String info = "";
+                    info += i.getId()+ " " + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate()+"\n";
+                    jInfo.setText(info);
+                }
+            }
+        }
+        
+//        String info = "";
+//        
+//        for(Items i : infoList){
+//            info += i.getId()+ " " + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate()+"\n";
+//        }
+//        jInfo.setText(info);
+    }//GEN-LAST:event_jAcceptActionPerformed
 
     private void jUserIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUserIdActionPerformed
         // TODO add your handling code here:
@@ -346,18 +426,20 @@ public class AdminMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jAccept;
     private javax.swing.JTextField jBookId;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JTextArea jExtensionRequest;
+    private javax.swing.JTextArea jInfo;
     private javax.swing.JButton jLogOut;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButton jRad1;
     private javax.swing.JRadioButton jRad2;
+    private javax.swing.JButton jReject;
     private javax.swing.JTextArea jResoursesField;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;

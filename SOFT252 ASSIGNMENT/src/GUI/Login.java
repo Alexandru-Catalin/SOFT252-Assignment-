@@ -5,8 +5,12 @@
  */
 package GUI;
 
+import Controller.State;
+import Librari.Books;
 import Librari.Client;
+import Librari.Items;
 import Librari.Message;
+import Librari.ReturnState;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -23,6 +27,7 @@ public class Login extends javax.swing.JFrame {
     private ClientMenu clientUi;
     private AdminMenu adminUi;
     private ArrayList<Message> adminMessage;
+    private ArrayList<Items> itemList;
     
     public Login() {
         initComponents();
@@ -30,8 +35,31 @@ public class Login extends javax.swing.JFrame {
         clientUi = new ClientMenu(this);
         adminUi = new AdminMenu(this);
         this.adminMessage = new ArrayList<Message>();
+        this.itemList = new ArrayList<Items>();
+        
+        State state = new ReturnState();
+        float rating = 0f;
+        Books a = new Books(0,"Book1",0, state, rating, 0);
+        Books s = new Books(1,"Book2",0,state, rating, 0);
+        Books d = new Books(2,"Book3",0,state, rating, 0);
+        Books f = new Books(3,"Book4",0,state, rating, 0);
+        
+        itemList.add(a);
+        itemList.add(s);
+        itemList.add(d);
+        itemList.add(f);
     }
 
+    public ArrayList<Items> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(ArrayList<Items> itemList) {
+        this.itemList = itemList;
+    }
+
+    
+    
     public ArrayList<Message> getAdminMessage() {
         return adminMessage;
     }
@@ -174,10 +202,12 @@ public class Login extends javax.swing.JFrame {
         
         String clientId = "Corvus";
         String clientPass = "Corax";
+
         String adminId = "Vulturul";
         String adminPass = "Vulturul";
         
         Client c = new Client(1, "Corax", "Corvus", "");
+        
         
         if(clientId.equals(jUserId.getText()))
         {
@@ -194,6 +224,11 @@ public class Login extends javax.swing.JFrame {
                clientUi.setVisible(true);
                clientUi.setClient(c);
                clientUi.setAdminList(adminMessage);
+               
+               clientUi.setItemList(itemList);
+               clientUi.setup();
+               jUserId.setText("");
+               jPass.setText("");
                return;
             }
             else
@@ -216,13 +251,14 @@ public class Login extends javax.swing.JFrame {
                this.setVisible(false);
                adminUi.setVisible(true);
                adminUi.setAdminMessage(adminMessage);
+               adminUi.setItemList(itemList);
                return;
             }
             else
             {
                 JOptionPane.showMessageDialog(this, "Incorrect password.");
             }
-        }        
+        }    
     }//GEN-LAST:event_LoginActionPerformed
     
     private void jRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegisterActionPerformed

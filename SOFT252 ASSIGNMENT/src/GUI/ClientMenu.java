@@ -65,8 +65,6 @@ public class ClientMenu extends javax.swing.JFrame {
         eb.add(jRE2);
     }
     
-    
-    
     public ClientMenu(Login l) {
           
         initComponents(); 
@@ -79,28 +77,28 @@ public class ClientMenu extends javax.swing.JFrame {
         this.returnList = new ArrayList<Items>();
         this.extensionList = new ArrayList<Items>();
         this.loginUi = l;
-        this.adminMessage = new ArrayList<Message>();
-        
-        
-       
-        
-        State state = new ReturnState();
-        float rating = 0f;
-        
+        this.adminMessage = new ArrayList<Message>();  
         String itemData = "";
-        Books a = new Books(0,"Book1",0, state, rating, 0);
-        Books s = new Books(1,"Book2",0,state, rating, 0);
-        Books d = new Books(2,"Book3",0,state, rating, 0);
-        Books f = new Books(3,"Book4",0,state, rating, 0);
+           
+        for (Items i : itemList){
+            
+            itemData += i.getId() + i.getTitle() + " " + i.getBorrowInf().getReturnDate() + " " + i.getRating() + "Stars" + "\n";
+            
+        }
+                        
+        jSearch.setText(itemData);
+        jSearch.setEditable(false);
+    }
+    
+    
+    public void setup()
+    {
+         String itemData = "";
         
-        itemList.add(a);
-        itemList.add(s);
-        itemList.add(d);
-        itemList.add(f);
         
         for (Items i : itemList){
             
-            itemData += i.getId() + i.getTitle() + " " + i.getBorrowInf().getReturnDate() + " " + rating + "Stars" + "\n";
+            itemData += i.getId() + i.getTitle() + " " + i.getBorrowInf().getReturnDate() + " " + i.getRating() + "Stars" + "\n";
             
         }
                         
@@ -185,11 +183,11 @@ public class ClientMenu extends javax.swing.JFrame {
         jRE2 = new javax.swing.JRadioButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jClientItems1 = new javax.swing.JTextArea();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        label8 = new java.awt.Label();
         WELCOME = new java.awt.Label();
         jLogOut = new javax.swing.JButton();
+        label8 = new java.awt.Label();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Requests");
@@ -326,17 +324,10 @@ public class ClientMenu extends javax.swing.JFrame {
         jRE1.setText("2 Weeks Extension");
 
         jRE2.setText("1 Mounth Extension");
-        jRE2.setActionCommand("1 Mounth Extension");
 
         jClientItems1.setColumns(20);
         jClientItems1.setRows(5);
         jScrollPane4.setViewportView(jClientItems1);
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane7.setViewportView(jTextArea1);
-
-        label8.setText("Admin messages + news");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -369,10 +360,6 @@ public class ClientMenu extends javax.swing.JFrame {
                                         .addComponent(jResources)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane7)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -397,7 +384,7 @@ public class ClientMenu extends javax.swing.JFrame {
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 48, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jReturnButton)
@@ -468,7 +455,7 @@ public class ClientMenu extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -487,11 +474,7 @@ public class ClientMenu extends javax.swing.JFrame {
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(185, 185, 185))
         );
 
         WELCOME.setText("WELCOME");
@@ -503,19 +486,38 @@ public class ClientMenu extends javax.swing.JFrame {
             }
         });
 
+        label8.setText("Admin messages + news");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane7.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(354, 354, 354)
-                .addComponent(WELCOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLogOut))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(540, 540, 540)
+                        .addComponent(WELCOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLogOut))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(20, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -526,117 +528,141 @@ public class ClientMenu extends javax.swing.JFrame {
                         .addComponent(WELCOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLogOut))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 11, Short.MAX_VALUE)
+                        .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jSearchItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSearchItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jSearchItemActionPerformed
-
-    private void jSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSearchButtonActionPerformed
-        jSearchItem.getText();
-        jSearch.getText();
+    private void jLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogOutActionPerformed
+     
+        this.setVisible(false);
+        loginUi.setVisible(true);
+        jBorrowList.setText("");
+        jSearchItem.setText("");
+        jReturnItem.setText("");
+        jClientItems.setText("");
+        jReturnField.setText("");
+        jExtension.setText("");
+        jExtensionField.setText("");
         
+    }//GEN-LAST:event_jLogOutActionPerformed
+
+    private void jMoveExtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMoveExtActionPerformed
+        jClientItems.getText();
+        jReturnItem.getText();
+
         String searchItem = "";
         String searchList = "";
-        
         String testPass = "";
-        
-        for (Items i : itemList)
+
+        for (Items i : cartList)
         {
-            if (Integer.parseInt(jSearchItem.getText()) == i.getId()) 
+            if (Integer.parseInt(jReturnItem.getText()) == i.getId())
             {
-                if (i.getBorrowInf().getIsBorrowed() == false)
+                i.getRating();
+                i.BorrowItem(c, 0);
+                returnList.add(i);
+            }
+        }
+
+        String returnData = "";
+
+        float totalTax = 0f;
+        for (Items i : returnList)
+        {
+            returnData += i.getId() + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate() + " " + i.searchUserRating(c.getId()) + "Stars" + " " + c.getFirstName() +"\n";
+            totalTax = i.getBorrowInf().getOverdueTaxes();
+        }
+        String taxes = totalTax + " ";
+        jTaxField.setText(taxes);
+        jExtensionField.setText(returnData);
+    }//GEN-LAST:event_jMoveExtActionPerformed
+
+    private void jRB2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRB2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRB2ActionPerformed
+
+    private void jRad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRad1ActionPerformed
+
+    }//GEN-LAST:event_jRad1ActionPerformed
+
+    private void jResourcesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jResourcesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jResourcesActionPerformed
+
+    private void jRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRequestActionPerformed
+
+        jExtensionField.getText();
+        jExtension.getText();
+        jClientItems.getText();
+
+        String searchItem = "";
+        String searchList = "";
+        String testPass = "";
+
+        for (Items i : cartList)
+        {
+            if (Integer.parseInt(jExtension.getText()) == i.getId())
+            {
+
+                if (jRE1.isSelected() == true)
                 {
-                    borrowList.add(i);
-                }         
+                    i.addExtension(c.getId(),0);
+                    System.out.println("2W");
+                }
                 else
                 {
-                    JOptionPane.showMessageDialog(this, "Already borrowed!");
+                    i.addExtension(c.getId(), 1);
+                    System.out.println("1M");
                 }
-            }
-        }
-        
-        String borrowData = "";
-        
-        for (Items i : borrowList)
-        {    
-            borrowData += i.getId() + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate() +"\n";          
-        }
-        
-        jBorrowList.setText(borrowData);
-        
-        System.out.println(c.getFirstName());
-    }//GEN-LAST:event_jSearchButtonActionPerformed
 
-    private void jBorrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBorrowActionPerformed
-        // TODO add your handling code here:
-        jBorrowList.getText();
-        jSearch.getText();  
-        
-        String searchItem = "";
-        String searchList = "";
-        
-        String testPass = "";
-        
-       
-        
-        for (Items i : itemList)
+                i.getExtension();
+                i.BorrowItem(c, 0);
+                extensionList.add(i);
+            }
+        }
+        String returnExtention = "";
+
+        for (Items i : extensionList)
         {
-            if (Integer.parseInt(jSearchItem.getText()) == i.getId()) 
-            {
-                
-                if (jRad1.isSelected() == true) 
-            {
-              i.getBorrowInf().userBorrow(c.getId(), 0);
-              cartList.add(i);
-            }
-            else
-            {
-                i.getBorrowInf().userBorrow(c.getId(), 1);
-                cartList.add(i);
-            }
-            
-                i.getBorrowInf().checkOverdue(LocalDate.now());         
-            }
+            returnExtention += i.getId()+ " " + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate()+ " " + i.getExtension() + " days" + " " + i.searchUserRating(c.getId()) + "Stars"+ " " + c.getFirstName() + " " + "userId:" +c.getId()+"\n";
         }
-        
-        String chartData = "";
-        
-        for (Items i : cartList)
-        {            
-            chartData += i.getId() + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate() +"\n";         
-        }
-        
-        jClientItems.setText(chartData);
-        borrowList.clear();
-    }//GEN-LAST:event_jBorrowActionPerformed
+
+        Message e = new Message(returnExtention, "", c.getId(), 0, "");
+
+        adminMessage.add(e);
+    }//GEN-LAST:event_jRequestActionPerformed
 
     private void jItemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItemButtonActionPerformed
         // TODO add your handling code here:
-        
+
         jClientItems.getText();
         jReturnItem.getText();
-        
+
         String searchItem = "";
         String searchList = "";
-        
+
         String testPass = "";
-        
+
         for (Items i : cartList)
         {
-            if (Integer.parseInt(jReturnItem.getText()) == i.getId()) 
-            { 
-               
+            if (Integer.parseInt(jReturnItem.getText()) == i.getId())
+            {
+
                 if (jRB1.isSelected() == true)
                 {
                     i.addUserRating(0, c.getId());
                     System.out.println("1");
-                } 
+                }
                 else if(jRB2.isSelected() == true){
                     i.addUserRating(1, c.getId());
                     System.out.println("2");
@@ -653,20 +679,19 @@ public class ClientMenu extends javax.swing.JFrame {
                     i.addUserRating(4, c.getId());
                     System.out.println("5");
                 }
-                
+
                 i.getRating();
                 i.BorrowItem(c, 0);
                 returnList.add(i);
             }
         }
-        
+
         String returnData = "";
-        
-        
+
         float totalTax = 0f;
         for (Items i : returnList)
-        {            
-            returnData += i.getId() + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate() + " " + i.searchUserRating(c.getId()) + "Stars" +"\n";            
+        {
+            returnData += i.getId() + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate() + " " + i.searchUserRating(c.getId()) + "Stars" +"\n";
             totalTax = i.getBorrowInf().getOverdueTaxes();
         }
         String taxes = totalTax + " ";
@@ -683,171 +708,156 @@ public class ClientMenu extends javax.swing.JFrame {
         jReturnField.getText();
         jSearch.getText();
         jTaxField.getText();
-        
+
         String searchItem = " ";
         String searchList = " ";
-        
+
         String testPass = " ";
         int j = 0;
         Boolean isFound = false;
         for (Items i : returnList)
         {
-            
-            if (Integer.parseInt(jReturnItem.getText()) == i.getId()) 
+
+            if (Integer.parseInt(jReturnItem.getText()) == i.getId())
             {
-                
-               if(i.getBorrowInf().getOverdueDate() == true)
-               { 
+
+                if(i.getBorrowInf().getOverdueDate() == true)
+                {
                     jReturnButton.setText("Pay and Return");
                     System.out.println("Matched");
-                    
+
                     if (i.getBorrowInf().getOverdueDate() == false)
                     {
                         System.out.println("Not overdue");
                         i.ReturnState();
                         System.out.println("Returned");
-                        isFound = true;                 
-                    }     
+                        isFound = true;
+                    }
                 }
-               else
-               {
-                   System.out.println("Matched");
+                else
+                {
+                    System.out.println("Matched");
                     if (i.getBorrowInf().getOverdueDate() == false)
                     {
                         System.out.println("Not overdue");
                         i.ReturnState();
                         System.out.println("Returned");
-                        isFound = true;          
-                    }                          
-               }
-               jReturnButton.setText("Return");
+                        isFound = true;
+                    }
+                }
+                jReturnButton.setText("Return");
             }
             if (isFound == false)
             j++;
         }
-        
+
         cartList.remove(j);
-        
+
         String returnData = " ";
-        
+
         for (Items i : cartList)
-        {    
-            returnData += i.getId() + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate() +"\n";              
-        
+        {
+            returnData += i.getId() + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate() +"\n";
+
             if(i.getBorrowInf().getOverdueDate() == true){
                 returnData += i.getBorrowInf().getOverdueTaxes();
             }
-        
+
         }
-        
+
         String refresh = "";
         for (Items i : itemList){
-            
+
             refresh += i.getId() + i.getTitle() + " " + i.getBorrowInf().getReturnDate() + " " + i.getRating() + "Stars" + "\n";
-            
         }
-                        
+
         jSearch.setText(refresh);
         jClientItems.setText(returnData);
-        
+
         jBorrowList.setText("");
         returnList.clear();
-        
     }//GEN-LAST:event_jReturnButtonActionPerformed
 
-    private void jRad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRad1ActionPerformed
-        
-    }//GEN-LAST:event_jRad1ActionPerformed
-
-    private void jResourcesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jResourcesActionPerformed
+    private void jBorrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBorrowActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jResourcesActionPerformed
+        jBorrowList.getText();
+        jSearch.getText();
 
-    private void jRB2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRB2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRB2ActionPerformed
-
-    private void jLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogOutActionPerformed
-     
-        this.setVisible(false);
-        loginUi.setVisible(true);
-        
-    }//GEN-LAST:event_jLogOutActionPerformed
-
-    private void jRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRequestActionPerformed
- 
-        jExtensionField.getText();
-        jExtension.getText();
-        jClientItems.getText();
-        
         String searchItem = "";
         String searchList = "";
+
         String testPass = "";
 
-        for (Items i : cartList)
+        for (Items i : itemList)
         {
-            if (Integer.parseInt(jExtension.getText()) == i.getId()) 
-            { 
-               
-                if (jRE1.isSelected() == true)
+            if (Integer.parseInt(jSearchItem.getText()) == i.getId())
+            {
+
+                if (jRad1.isSelected() == true)
                 {
-                    i.addExtension(c.getId(),0);
-                    System.out.println("2W");
-                } 
+                    i.getBorrowInf().userBorrow(c.getId(), 0);
+                    cartList.add(i);
+                }
                 else
                 {
-                    i.addExtension(c.getId(), 1);
-                    System.out.println("1M");
+                    i.getBorrowInf().userBorrow(c.getId(), 1);
+                    cartList.add(i);
                 }
-                
-                i.getExtension();
-                i.BorrowItem(c, 0);
-                extensionList.add(i);
+
+                i.getBorrowInf().checkOverdue(LocalDate.now());
             }
         }
-        String returnExtention = "";
-        
-        for (Items i : extensionList)
-        {            
-            returnExtention += i.getId()+ " " + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate()+ " " + i.getExtension() + " days" + " " + i.searchUserRating(c.getId()) + "Stars" +"\n";            
-        }
-        
-        Message e = new Message(returnExtention, "", c.getId(), 0, "");
-       
-        adminMessage.add(e);
-    }//GEN-LAST:event_jRequestActionPerformed
 
-    private void jMoveExtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMoveExtActionPerformed
-        jClientItems.getText();
-        jReturnItem.getText();
-        
-        String searchItem = "";
-        String searchList = "";
-        String testPass = "";
-        
+        String chartData = "";
+
         for (Items i : cartList)
         {
-            if (Integer.parseInt(jReturnItem.getText()) == i.getId()) 
-            {  
-                i.getRating();
-                i.BorrowItem(c, 0);
-                returnList.add(i);
+            chartData += i.getId() + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate() +"\n";
+        }
+
+        jClientItems.setText(chartData);
+        borrowList.clear();
+    }//GEN-LAST:event_jBorrowActionPerformed
+
+    private void jSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSearchButtonActionPerformed
+        jSearchItem.getText();
+        jSearch.getText();
+
+        String searchItem = "";
+        String searchList = "";
+
+        String testPass = "";
+
+        for (Items i : itemList)
+        {
+            if (Integer.parseInt(jSearchItem.getText()) == i.getId())
+            {
+                if (i.getBorrowInf().getIsBorrowed() == false)
+                {
+                    borrowList.add(i);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "Already borrowed!");
+                }
             }
         }
-        
-        String returnData = "";
-        
-        
-        float totalTax = 0f;
-        for (Items i : returnList)
-        {            
-            returnData += i.getId() + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate() + " " + i.searchUserRating(c.getId()) + "Stars" +"\n";            
-            totalTax = i.getBorrowInf().getOverdueTaxes();
+
+        String borrowData = "";
+
+        for (Items i : borrowList)
+        {
+            borrowData += i.getId() + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate() +"\n";
         }
-        String taxes = totalTax + " ";
-        jTaxField.setText(taxes);
-        jExtensionField.setText(returnData);
-    }//GEN-LAST:event_jMoveExtActionPerformed
+
+        jBorrowList.setText(borrowData);
+
+        System.out.println(c.getFirstName());
+    }//GEN-LAST:event_jSearchButtonActionPerformed
+
+    private void jSearchItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSearchItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jSearchItemActionPerformed
 
     /**
      * @param args the command line arguments
