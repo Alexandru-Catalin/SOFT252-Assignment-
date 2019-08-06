@@ -6,11 +6,13 @@
 package GUI;
 
 import Controller.State;
+import Librari.Admin;
 import Librari.Books;
 import Librari.Client;
 import Librari.Items;
 import Librari.Message;
 import Librari.ReturnState;
+import Librari.User;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -27,7 +29,12 @@ public class Login extends javax.swing.JFrame {
     private ClientMenu clientUi;
     private AdminMenu adminUi;
     private ArrayList<Message> adminMessage;
+    private ArrayList<Message> clientRequest;
     private ArrayList<Items> itemList;
+    private ArrayList<Message> newsList;
+    private ArrayList<Message> messageList;
+    private ArrayList<Client> clientLog;
+    private ArrayList<Admin> adminLog;
     
     public Login() {
         initComponents();
@@ -36,13 +43,18 @@ public class Login extends javax.swing.JFrame {
         adminUi = new AdminMenu(this);
         this.adminMessage = new ArrayList<Message>();
         this.itemList = new ArrayList<Items>();
+        this.clientRequest = new ArrayList<Message>();
+        this.newsList = new ArrayList<Message>();
+        this.messageList = new ArrayList<Message>();
+        this.clientLog = new ArrayList<Client>();
+        this.adminLog = new ArrayList<Admin>();
         
         State state = new ReturnState();
         float rating = 0f;
-        Books a = new Books(0,"Book1",0, state, rating, 0);
-        Books s = new Books(1,"Book2",0,state, rating, 0);
-        Books d = new Books(2,"Book3",0,state, rating, 0);
-        Books f = new Books(3,"Book4",0,state, rating, 0);
+        Books a = new Books(0," Book1",0, state, rating, 0);
+        Books s = new Books(1," Book2",0,state, rating, 0);
+        Books d = new Books(2," Book3",0,state, rating, 0);
+        Books f = new Books(3," Book4",0,state, rating, 0);
         
         itemList.add(a);
         itemList.add(s);
@@ -50,6 +62,48 @@ public class Login extends javax.swing.JFrame {
         itemList.add(f);
     }
 
+    public ArrayList<Client> getClientLog() {
+        return clientLog;
+    }
+
+    public void setClientLog(ArrayList<Client> clientLog) {
+        this.clientLog = clientLog;
+    }
+
+    public ArrayList<Admin> getAdminLog() {
+        return adminLog;
+    }
+
+    public void setAdminLog(ArrayList<Admin> adminLog) {
+        this.adminLog = adminLog;
+    }
+
+    public ArrayList<Message> getMessageList() {
+        return messageList;
+    }
+
+    public void setMessageList(ArrayList<Message> messageList) {
+        this.messageList = messageList;
+    }
+
+    
+    
+    public ArrayList<Message> getClientRequest() {
+        return clientRequest;
+    }
+
+    public void setClientRequest(ArrayList<Message> clientRequest) {
+        this.clientRequest = clientRequest;
+    }
+
+    public ArrayList<Message> getNewsList() {
+        return newsList;
+    }
+
+    public void setNewsList(ArrayList<Message> newsList) {
+        this.newsList = newsList;
+    }
+    
     public ArrayList<Items> getItemList() {
         return itemList;
     }
@@ -58,8 +112,6 @@ public class Login extends javax.swing.JFrame {
         this.itemList = itemList;
     }
 
-    
-    
     public ArrayList<Message> getAdminMessage() {
         return adminMessage;
     }
@@ -200,65 +252,72 @@ public class Login extends javax.swing.JFrame {
         jUserId.getText();
         jPass.getPassword();
         
-        String clientId = "Corvus";
-        String clientPass = "Corax";
-
-        String adminId = "Vulturul";
-        String adminPass = "Vulturul";
+        Client c = new Client(100, "Corax", "Corvus", "");
+        Admin a = new Admin(1, "Vulturul", "Vulturul", "");
         
-        Client c = new Client(1, "Corax", "Corvus", "");
+        adminLog.add(a);
+        clientLog.add(c);
         
-        
-        if(clientId.equals(jUserId.getText()))
+        for(Client u : clientLog)
         {
-            String testPass = "";
-            for (int i = 0; i < jPass.getPassword().length; i++) 
+            if(u.getId() == Integer.parseInt(jUserId.getText()))
             {
-                testPass += jPass.getPassword()[i];
-            }
-            
-            if(clientPass.equals(testPass))
-            {
-               JOptionPane.showMessageDialog(this, "Welcome!");
-               this.setVisible(false);
-               clientUi.setVisible(true);
-               clientUi.setClient(c);
-               clientUi.setAdminList(adminMessage);
-               
-               clientUi.setItemList(itemList);
-               clientUi.setup();
-               jUserId.setText("");
-               jPass.setText("");
-               return;
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(this, "Incorrect password.");
-            }
-        }
-        
-          if(adminId.equals(jUserId.getText()))
-        {
-            String testPass = "";
-            for (int i = 0; i < jPass.getPassword().length; i++) 
-            {
-                testPass += jPass.getPassword()[i];
-            }
-            
-            if(adminPass.equals(testPass))
-            {
-               JOptionPane.showMessageDialog(this, "Welcome!");
-               this.setVisible(false);
-               adminUi.setVisible(true);
-               adminUi.setAdminMessage(adminMessage);
-               adminUi.setItemList(itemList);
-               return;
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(this, "Incorrect password.");
-            }
+                String testPass = "";
+                for (int i = 0; i < jPass.getPassword().length; i++) 
+                {
+                    testPass += jPass.getPassword()[i];
+                }
+                
+                if(u.getPassword().equals(testPass))
+                {
+                    
+                    this.setVisible(false);
+                    clientUi.setVisible(true);
+                    clientUi.setClient(u);
+                    clientUi.setAdminMessage(adminMessage);
+                    clientUi.setAdminList(adminMessage);
+                    clientUi.setClientRequest(clientRequest);
+                    clientUi.setNewsList(newsList);
+                    clientUi.setItemList(itemList);
+                    clientUi.setMessageList(messageList);
+                    clientUi.setup();
+                    clientUi.setAdminLog(adminLog);
+                    jUserId.setText("");
+                    jPass.setText("");
+                    return;
+                }   
+            }        
         }    
+        
+        for(Admin u : adminLog)
+        {
+            if(u.getId() == Integer.parseInt(jUserId.getText()))
+            {
+                String testPass = "";
+                for (int i = 0; i < jPass.getPassword().length; i++) 
+                {
+                    testPass += jPass.getPassword()[i];
+                }
+                
+                if(u.getPassword().equals(testPass))
+                {
+                    
+                    this.setVisible(false);
+                    adminUi.setVisible(true);
+                    adminUi.setAdmin(u);
+                    adminUi.setAdminMessage(adminMessage);
+                    adminUi.setClientRequest(clientRequest);
+                    adminUi.setNewsList(newsList);
+                    adminUi.setItemList(itemList);
+                    adminUi.setMessageList(messageList);  
+                    adminUi.setAdmminLog(adminLog);
+                    jUserId.setText("");
+                    jPass.setText("");
+                    return;
+                }   
+            }        
+        }    
+        
     }//GEN-LAST:event_LoginActionPerformed
     
     private void jRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegisterActionPerformed

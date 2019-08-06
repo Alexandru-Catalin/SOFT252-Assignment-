@@ -5,12 +5,11 @@
  */
 package GUI;
 
-import Controller.State;
-import Librari.Books;
+import Librari.Admin;
 import Librari.Client;
 import Librari.Items;
 import Librari.Message;
-import Librari.ReturnState;
+import Librari.User;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
@@ -34,11 +33,33 @@ public class ClientMenu extends javax.swing.JFrame {
     private ArrayList<Items> returnList;
     private ArrayList<Items> extensionList;
     private ArrayList<Message> adminMessage;
+    private ArrayList<Message> clientRequest;
+    private ArrayList<Message> messageList;
+    private ArrayList<Message> newsList;
+    private ArrayList<Client> clientLog;
+    private ArrayList<Admin> adminLog;
     private Client c;
     private ButtonGroup bg = new ButtonGroup();
     private ButtonGroup rb = new ButtonGroup();
     private ButtonGroup eb = new ButtonGroup();
 
+    public ArrayList<Client> getClientLog() {
+        return clientLog;
+    }
+
+    public void setClientLog(ArrayList<Client> clientLog) {
+        this.clientLog = clientLog;
+    }
+
+    public ArrayList<Admin> getAdminLog() {
+        return adminLog;
+    }
+
+    public void setAdminLog(ArrayList<Admin> adminLog) {
+        this.adminLog = adminLog;
+    }
+
+    
     public ArrayList<Message> getAdminMessage() {
         return adminMessage;
     }
@@ -71,6 +92,7 @@ public class ClientMenu extends javax.swing.JFrame {
         groupButton();
         rateButton();
         extensionButton();
+        
         this.itemList = new ArrayList<Items>();
         this.borrowList = new ArrayList<Items>();
         this.cartList = new ArrayList<Items>();
@@ -78,8 +100,16 @@ public class ClientMenu extends javax.swing.JFrame {
         this.extensionList = new ArrayList<Items>();
         this.loginUi = l;
         this.adminMessage = new ArrayList<Message>();  
+        this.clientRequest = new ArrayList<Message>();
+        this.newsList = new ArrayList<Message>();
+        this.messageList = new ArrayList<Message>();
+        this.clientLog = new ArrayList<Client>();
+        this.adminLog = new ArrayList<Admin>();
+        
         String itemData = "";
-           
+        
+        
+        
         for (Items i : itemList){
             
             itemData += i.getId() + i.getTitle() + " " + i.getBorrowInf().getReturnDate() + " " + i.getRating() + "Stars" + "\n";
@@ -88,6 +118,7 @@ public class ClientMenu extends javax.swing.JFrame {
                         
         jSearch.setText(itemData);
         jSearch.setEditable(false);
+        
     }
     
     
@@ -106,6 +137,41 @@ public class ClientMenu extends javax.swing.JFrame {
         jSearch.setEditable(false);
     }
 
+    public ArrayList<Message> getMessageList() {
+        return messageList;
+    }
+
+    public void setMessageList(ArrayList<Message> messageList) {
+        this.messageList = messageList;
+        
+        String message = "";
+        for (Message m : messageList){
+           
+            if (c.getId() == m.getReceiverId()) 
+            {
+                message += m.getRequestMessage()+ " " + "Admin ID:" + " " + m.getSenderId() + "\n";
+            }
+        }
+ 
+        jMessages.setText(message);
+    
+    }
+
+    
+    
+    public ArrayList<Message> getNewsList() {
+        return newsList;
+    }
+
+    public void setNewsList(ArrayList<Message> newsList) {
+        this.newsList = newsList;
+        String news = "";
+        for (Message n : newsList){
+            news += n.getRequestMessage()+ " " + "Admin ID:" + " " + n.getSenderId() + "\n";
+        }
+        jNews.setText(news);     
+    }
+    
     public void setClient(Client a)
     {
         c = a;
@@ -116,6 +182,16 @@ public class ClientMenu extends javax.swing.JFrame {
         adminMessage = messageList;
         
     }
+
+    public ArrayList<Message> getClientRequest() {
+        return clientRequest;
+    }
+
+    public void setClientRequest(ArrayList<Message> clientRequest) {
+        this.clientRequest = clientRequest;
+    }
+     
+     
     
     public String getItems() {
         return items;
@@ -142,7 +218,7 @@ public class ClientMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jSend = new javax.swing.JPanel();
         label1 = new java.awt.Label();
         jSearchItem = new javax.swing.JTextField();
         jSearchButton = new javax.swing.JButton();
@@ -165,7 +241,6 @@ public class ClientMenu extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         jExtensionField = new javax.swing.JTextArea();
         label6 = new java.awt.Label();
-        jResReq = new javax.swing.JTextField();
         jResources = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         jSearch = new javax.swing.JTextArea();
@@ -182,12 +257,15 @@ public class ClientMenu extends javax.swing.JFrame {
         jRE1 = new javax.swing.JRadioButton();
         jRE2 = new javax.swing.JRadioButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jClientItems1 = new javax.swing.JTextArea();
+        jResourceField = new javax.swing.JTextArea();
         WELCOME = new java.awt.Label();
         jLogOut = new javax.swing.JButton();
         label8 = new java.awt.Label();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jNews = new javax.swing.JTextArea();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jMessages = new javax.swing.JTextArea();
+        label7 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Requests");
@@ -325,57 +403,54 @@ public class ClientMenu extends javax.swing.JFrame {
 
         jRE2.setText("1 Mounth Extension");
 
-        jClientItems1.setColumns(20);
-        jClientItems1.setRows(5);
-        jScrollPane4.setViewportView(jClientItems1);
+        jResourceField.setColumns(20);
+        jResourceField.setRows(5);
+        jScrollPane4.setViewportView(jResourceField);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jSendLayout = new javax.swing.GroupLayout(jSend);
+        jSend.setLayout(jSendLayout);
+        jSendLayout.setHorizontalGroup(
+            jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jSendLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jSendLayout.createSequentialGroup()
+                        .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jSendLayout.createSequentialGroup()
                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jRE1)
                                     .addComponent(jRE2)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jSendLayout.createSequentialGroup()
                                 .addComponent(jExtension, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jRequest)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane4)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jResReq, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jResources)))
+                            .addGroup(jSendLayout.createSequentialGroup()
+                                .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jResources)
                                 .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jSendLayout.createSequentialGroup()
+                        .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jSendLayout.createSequentialGroup()
                                 .addComponent(jSearchItem, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jSearchButton))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jSendLayout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jRB3)
                                     .addComponent(jRB4)
                                     .addComponent(jRB5)
                                     .addComponent(jRB2)
                                     .addComponent(jRB1)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jSendLayout.createSequentialGroup()
                                 .addComponent(jReturnItem, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jItemButton)
@@ -385,8 +460,8 @@ public class ClientMenu extends javax.swing.JFrame {
                             .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jSendLayout.createSequentialGroup()
                                 .addComponent(jReturnButton)
                                 .addGap(18, 18, 18)
                                 .addComponent(jTaxField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -394,8 +469,8 @@ public class ClientMenu extends javax.swing.JFrame {
                                 .addComponent(taxField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jSendLayout.createSequentialGroup()
                                     .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jBorrow)
@@ -406,43 +481,43 @@ public class ClientMenu extends javax.swing.JFrame {
                                     .addContainerGap(45, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        jSendLayout.setVerticalGroup(
+            jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jSendLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBorrow)
                         .addComponent(jRad1)
                         .addComponent(jRad2))
                     .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jSendLayout.createSequentialGroup()
+                        .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jSearchItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSearchButton))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jSendLayout.createSequentialGroup()
                         .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(taxField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jReturnItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jItemButton)
                                 .addComponent(jMoveExt)
                                 .addComponent(jReturnButton)
                                 .addComponent(jTaxField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jSendLayout.createSequentialGroup()
                         .addComponent(jRB1)
                         .addGap(18, 18, 18)
                         .addComponent(jRB2)
@@ -452,28 +527,27 @@ public class ClientMenu extends javax.swing.JFrame {
                         .addComponent(jRB4)
                         .addGap(18, 18, 18)
                         .addComponent(jRB5))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jResReq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jResources)
-                            .addComponent(jExtension, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRequest))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jRE1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRE2))
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jExtension, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jRequest))
+                    .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jResources)
+                        .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jSendLayout.createSequentialGroup()
+                        .addComponent(jRE1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRE2))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(185, 185, 185))
         );
 
@@ -486,11 +560,18 @@ public class ClientMenu extends javax.swing.JFrame {
             }
         });
 
-        label8.setText("Admin messages + news");
+        label8.setText("News");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane7.setViewportView(jTextArea1);
+        jNews.setEditable(false);
+        jNews.setColumns(20);
+        jNews.setRows(5);
+        jScrollPane7.setViewportView(jNews);
+
+        jMessages.setColumns(20);
+        jMessages.setRows(5);
+        jScrollPane8.setViewportView(jMessages);
+
+        label7.setText("Admin messages");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -500,24 +581,31 @@ public class ClientMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(540, 540, 540)
                         .addComponent(WELCOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLogOut))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(20, Short.MAX_VALUE))))
+                                .addGap(0, 308, Short.MAX_VALUE)
+                                .addComponent(jLogOut))
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(140, 140, 140)
+                                .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(171, 171, 171))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -527,16 +615,21 @@ public class ClientMenu extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(WELCOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLogOut))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSend, javax.swing.GroupLayout.PREFERRED_SIZE, 848, Short.MAX_VALUE)
+                        .addGap(20, 20, 20))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 11, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane8)
+                        .addGap(28, 28, 28))))
         );
 
         pack();
@@ -596,7 +689,18 @@ public class ClientMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jRad1ActionPerformed
 
     private void jResourcesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jResourcesActionPerformed
-        // TODO add your handling code here:
+
+        jResourceField.getText();
+        jResources.getText();
+        
+        String request = "";
+        
+        request += jResourceField.getText();
+        
+        Message r = new Message(request, "", c.getId(), 0, "");
+        
+        clientRequest.add(r);
+        
     }//GEN-LAST:event_jResourcesActionPerformed
 
     private void jRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRequestActionPerformed
@@ -902,13 +1006,13 @@ public class ClientMenu extends javax.swing.JFrame {
     private javax.swing.JButton jBorrow;
     private javax.swing.JTextArea jBorrowList;
     private javax.swing.JTextArea jClientItems;
-    private javax.swing.JTextArea jClientItems1;
     private javax.swing.JTextField jExtension;
     private javax.swing.JTextArea jExtensionField;
     private javax.swing.JButton jItemButton;
     private javax.swing.JButton jLogOut;
+    private javax.swing.JTextArea jMessages;
     private javax.swing.JButton jMoveExt;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextArea jNews;
     private javax.swing.JRadioButton jRB1;
     private javax.swing.JRadioButton jRB2;
     private javax.swing.JRadioButton jRB3;
@@ -919,7 +1023,7 @@ public class ClientMenu extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRad1;
     private javax.swing.JRadioButton jRad2;
     private javax.swing.JButton jRequest;
-    private javax.swing.JTextField jResReq;
+    private javax.swing.JTextArea jResourceField;
     private javax.swing.JButton jResources;
     private javax.swing.JButton jReturnButton;
     private javax.swing.JTextArea jReturnField;
@@ -931,17 +1035,19 @@ public class ClientMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTextArea jSearch;
     private javax.swing.JButton jSearchButton;
     private javax.swing.JTextField jSearchItem;
+    private javax.swing.JPanel jSend;
     private javax.swing.JTextField jTaxField;
-    private javax.swing.JTextArea jTextArea1;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
     private java.awt.Label label4;
     private java.awt.Label label5;
     private java.awt.Label label6;
+    private java.awt.Label label7;
     private java.awt.Label label8;
     private java.awt.Label taxField;
     // End of variables declaration//GEN-END:variables

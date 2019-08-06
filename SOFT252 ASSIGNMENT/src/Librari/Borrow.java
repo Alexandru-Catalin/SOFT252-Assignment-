@@ -89,10 +89,8 @@ public class Borrow implements Serializable{
     }
     
     
-    public void extensionAdd(int userID, int borrowingTime){
+    public void extensionAdd(int borrowingTime){
         int extension;
-        
-        this.userId = userID;
         
         if(borrowingTime == 0){
             extension = 14;
