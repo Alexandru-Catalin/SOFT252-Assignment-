@@ -13,10 +13,12 @@ import java.util.ArrayList;
  */
 public class Client extends User {
     
-      private ArrayList<Message> clientMessage;
+    private ArrayList<Items> borrowClientList; 
+    private ArrayList<Message> clientMessage;
     
     public Client(int id, String password, String firstName, String lastName){
         super(id, password, firstName, lastName);
+        this.borrowClientList = new ArrayList<Items>();
         this.clientMessage = new ArrayList<Message>();
     } 
 
@@ -27,8 +29,14 @@ public class Client extends User {
     public void setClientMessage(ArrayList<Message> clientMessage) {
         this.clientMessage = clientMessage;
     }
-    
-    
+
+    public ArrayList<Items> getBorrowClientList() {
+        return borrowClientList;
+    }
+
+    public void setBorrowClientList(ArrayList<Items> borrowList) {
+        this.borrowClientList = borrowList;
+    }
     
     @Override
     public void update() {

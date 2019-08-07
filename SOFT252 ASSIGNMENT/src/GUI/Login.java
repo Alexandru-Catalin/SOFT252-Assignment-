@@ -56,7 +56,7 @@ public class Login extends javax.swing.JFrame {
         Books d = new Books(2," Best Magicians",state, rating, 0);
         Books f = new Books(3," The Adventures of Corvus Corax",state, rating, 0);
         
-        DVDs e = new DVDs(4," The Adventures of Corvus Corax",state, rating, 0);
+        DVDs e = new DVDs(4," Best Friends",state, rating, 0);
         
         System.out.println(f.getCategory());
         System.out.println(e.getCategory());
@@ -91,9 +91,7 @@ public class Login extends javax.swing.JFrame {
     public void setMessageList(ArrayList<Message> messageList) {
         this.messageList = messageList;
     }
-
-    
-    
+ 
     public ArrayList<Message> getClientRequest() {
         return clientRequest;
     }
@@ -125,10 +123,7 @@ public class Login extends javax.swing.JFrame {
     public void setAdminMessage(ArrayList<Message> adminMessage) {
         this.adminMessage = adminMessage;
     }
-    
-    
-    
-    
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -246,10 +241,18 @@ public class Login extends javax.swing.JFrame {
         jPass.getPassword();
         
         Client c = new Client(100, "Corax", "Corvus", "");
-        Admin a = new Admin(1, "Vulturul", "Vulturul", "");
+        Client v = new Client(101, "James", "James", "James");
+        Client b = new Client(102, "Alex", "Catalin", "");
+        Client n = new Client(103, "Elena", "Elena", "");
+        Client m = new Client(104, "Georgiana", "Georgiana", "");
+        Admin a = new Admin(1, "Vulturul", "Vulturul", "Vulturul");
         
         adminLog.add(a);
         clientLog.add(c);
+        clientLog.add(v);
+        clientLog.add(b);
+        clientLog.add(n);
+        clientLog.add(m);
         
         for(Client u : clientLog)
         {
@@ -328,11 +331,7 @@ public class Login extends javax.swing.JFrame {
     private void jPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPassActionPerformed
-
-    
-    
-    
-    
+        
     /**
      * @param args the command line arguments
      */

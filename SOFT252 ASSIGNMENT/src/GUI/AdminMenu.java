@@ -39,9 +39,8 @@ public class AdminMenu extends javax.swing.JFrame {
     private ArrayList<Admin> admminLog;
     private float rating;
     private Admin a;
-        
+ 
     
-        
     public ArrayList<Client> getClientLog() {
         return clientLog;
     }
@@ -79,9 +78,7 @@ public class AdminMenu extends javax.swing.JFrame {
     public void setMessageList(ArrayList<Message> messageList) {
         this.messageList = messageList;
     }
-    
-    
-    
+
     public ArrayList<Message> getClientRequest() {
         return clientRequest;
     }
@@ -105,9 +102,7 @@ public class AdminMenu extends javax.swing.JFrame {
         
         jResoursesField.setText(clientList);
     }
-    
-    
-    
+
     public AdminMenu(Login l) {
         
         initComponents();
@@ -116,9 +111,7 @@ public class AdminMenu extends javax.swing.JFrame {
         this.loginUi = l;
         this.infoList = new ArrayList<Items>();
         rating = 0f;
-        
-        
-        
+  
     }
 
     public ArrayList<Items> getItemList() {
@@ -136,9 +129,7 @@ public class AdminMenu extends javax.swing.JFrame {
         }
         jCheck.setText(itemData);
     }
-
-    
-    
+  
     public ArrayList<Message> getAdminMessage() {
         return adminMessage;
     }
@@ -154,9 +145,7 @@ public class AdminMenu extends javax.swing.JFrame {
         
         jExtensionRequest.setText(requestList);
     }
-
-    
-    
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -842,7 +831,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
             if(Integer.parseInt(jCheckItem.getText()) == i.getId())
             {
-                status += i.getId()+ " " + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate()+ " "+ "extended by: " + i.getExtension() + " days" + " " + "user ID:"+ " " + i.getBorrowInf().getUserId() +"\n";
+                status += i.getId()+ " " + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate()+ " "+ "extended by: " + i.getExtension() + " days" + " " + "user ID:"+ " " + i.getBorrowInf().getUserId() + " " + i.getCategory() + "\n";
             }
         }
         jCheckArea.setText(status);

@@ -43,6 +43,7 @@ public class ClientMenu extends javax.swing.JFrame {
     private ButtonGroup rb = new ButtonGroup();
     private ButtonGroup eb = new ButtonGroup();
 
+    
     public ArrayList<Client> getClientLog() {
         return clientLog;
     }
@@ -58,7 +59,6 @@ public class ClientMenu extends javax.swing.JFrame {
     public void setAdminLog(ArrayList<Admin> adminLog) {
         this.adminLog = adminLog;
     }
-
     
     public ArrayList<Message> getAdminMessage() {
         return adminMessage;
@@ -120,8 +120,7 @@ public class ClientMenu extends javax.swing.JFrame {
         jSearch.setEditable(false);
         
     }
-    
-    
+  
     public void setup()
     {
          String itemData = "";
@@ -156,9 +155,7 @@ public class ClientMenu extends javax.swing.JFrame {
         jMessages.setText(message);
     
     }
-
-    
-    
+   
     public ArrayList<Message> getNewsList() {
         return newsList;
     }
@@ -189,9 +186,7 @@ public class ClientMenu extends javax.swing.JFrame {
 
     public void setClientRequest(ArrayList<Message> clientRequest) {
         this.clientRequest = clientRequest;
-    }
-     
-     
+    }     
     
     public String getItems() {
         return items;
@@ -439,7 +434,7 @@ public class ClientMenu extends javax.swing.JFrame {
                             .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jSendLayout.createSequentialGroup()
                                 .addComponent(jSearchItem, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSearchButton))
                             .addGroup(jSendLayout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -646,6 +641,7 @@ public class ClientMenu extends javax.swing.JFrame {
         jExtension.setText("");
         jExtensionField.setText("");
         jResourceField.setText("");
+        jClientItems.setText("");
         
     }//GEN-LAST:event_jLogOutActionPerformed
 
@@ -901,11 +897,13 @@ public class ClientMenu extends javax.swing.JFrame {
                 {
                     i.getBorrowInf().userBorrow(c.getId(), 0);
                     cartList.add(i);
+                    c.getBorrowClientList().add(i);
                 }
                 else
                 {
                     i.getBorrowInf().userBorrow(c.getId(), 1);
                     cartList.add(i);
+                    c.getBorrowClientList().add(i);
                 }
 
                 i.getBorrowInf().checkOverdue(LocalDate.now());
@@ -914,7 +912,7 @@ public class ClientMenu extends javax.swing.JFrame {
 
         String chartData = "";
 
-        for (Items i : cartList)
+        for (Items i : c.getBorrowClientList())
         {
             chartData += i.getId() + i.getTitle() + " " + "return in " + i.getBorrowInf().getReturnDate() +"\n";
         }
