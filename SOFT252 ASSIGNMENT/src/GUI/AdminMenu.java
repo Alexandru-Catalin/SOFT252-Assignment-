@@ -209,6 +209,18 @@ public class AdminMenu extends javax.swing.JFrame {
         jClientId = new javax.swing.JTextField();
         jCheckButton = new javax.swing.JButton();
         jSendButton = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        label13 = new java.awt.Label();
+        jFirstName = new javax.swing.JTextField();
+        label14 = new java.awt.Label();
+        jLastName = new javax.swing.JTextField();
+        label15 = new java.awt.Label();
+        jPass = new javax.swing.JPasswordField();
+        label16 = new java.awt.Label();
+        jCreateId = new javax.swing.JTextField();
+        jCreateUser = new javax.swing.JButton();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jCheckUserArea = new javax.swing.JTextArea();
         jLogOut = new javax.swing.JButton();
         label1 = new java.awt.Label();
 
@@ -339,7 +351,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
         label6.setText("ID");
 
-        label7.setText("Book Name");
+        label7.setText("Name");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -453,9 +465,9 @@ public class AdminMenu extends javax.swing.JFrame {
                     .addComponent(jButton1))
                 .addGap(7, 7, 7)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
@@ -485,7 +497,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
         label12.setText("Send Reminder");
 
-        jCheckButton.setText("Send");
+        jCheckButton.setText("Check");
         jCheckButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckButtonActionPerformed(evt);
@@ -516,9 +528,9 @@ public class AdminMenu extends javax.swing.JFrame {
                         .addComponent(jCheckItem, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jCheckButton)))
-                .addGap(18, 30, Short.MAX_VALUE)
+                .addGap(18, 28, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(label12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -558,6 +570,75 @@ public class AdminMenu extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Check Resources", jPanel5);
 
+        label13.setText("First Name");
+
+        label14.setText("Create Password");
+
+        label15.setText("Last Name");
+
+        label16.setText("Create Id");
+
+        jCreateUser.setText("Create");
+        jCreateUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCreateUserActionPerformed(evt);
+            }
+        });
+
+        jCheckUserArea.setColumns(20);
+        jCheckUserArea.setRows(5);
+        jScrollPane9.setViewportView(jCheckUserArea);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jFirstName)
+                    .addComponent(jLastName)
+                    .addComponent(jPass)
+                    .addComponent(jCreateId)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCreateUser))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCreateId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(label13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(label15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(label14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jCreateUser)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Create User", jPanel6);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -570,7 +651,7 @@ public class AdminMenu extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap()
                 .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
@@ -692,14 +773,29 @@ public class AdminMenu extends javax.swing.JFrame {
 
          State state = new ReturnState();
          
-        
+        boolean check = false;
         jBId.getText();
         jBookName.getText();
-        
-        Books i = new Books(Integer.parseInt(jBId.getText())," " + jBookName.getText(),0, state, rating, 0);
-        JOptionPane.showMessageDialog(this, "Resource Created");
-            
-        itemList.add(i);
+        for(Items i : itemList)
+        {
+            if(Integer.parseInt(jBId.getText()) == i.getId())
+            {      
+               check = true;
+            }
+           
+        }
+               
+               
+        if(check == false)
+        {
+            Books m = new Books(Integer.parseInt(jBId.getText())," " + jBookName.getText(),0, state, rating, 0);
+            JOptionPane.showMessageDialog(this, "Resource Created");
+            itemList.add(m);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Id already used");
+        }
         
     }//GEN-LAST:event_jCreateActionPerformed
 
@@ -762,6 +858,61 @@ public class AdminMenu extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(this, "Message Sent");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCreateUserActionPerformed
+
+        jCreateId.getText();
+        jCheckUserArea.getText();
+        
+        boolean passCheck = false;
+        boolean checkId = false;
+        String pass = "";
+        String status = "";
+        
+        for(Client c : clientLog)
+        {
+            if(Integer.parseInt(jCreateId.getText()) == c.getId())
+            {
+                checkId = true;
+            }
+        }
+        
+        if(Integer.parseInt(jCreateId.getText()) < 99)
+        {
+            JOptionPane.showMessageDialog(this, "Please insert an ID over 99");
+        }
+        
+        if(jPass.getPassword().length == 0)
+        {
+            passCheck = true;
+            JOptionPane.showMessageDialog(this, "Please create a password");
+            return;
+        }
+        
+        if(checkId == false && Integer.parseInt(jCreateId.getText()) > 99 && passCheck == false)
+        {
+            for(int i = 0; i < jPass.getPassword().length; i++)
+            {
+                pass += jPass.getPassword()[i];
+            }  
+            
+           Client c = new Client(Integer.parseInt(jCreateId.getText()), pass, jFirstName.getText(), jLastName.getText());
+           JOptionPane.showMessageDialog(this, "User Created");
+           
+           clientLog.add(c);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Id already used");
+        }
+        
+        for(Client c : clientLog)
+        {
+            status += c.getId() + " " + c.getFirstName() + " " + c.getLastName() + "\n";
+        }
+        
+        jCheckUserArea.setText(status);
+    }//GEN-LAST:event_jCreateUserActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -807,10 +958,15 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JTextArea jCheckArea;
     private javax.swing.JButton jCheckButton;
     private javax.swing.JTextField jCheckItem;
+    private javax.swing.JTextArea jCheckUserArea;
     private javax.swing.JTextField jClientId;
     private javax.swing.JButton jCreate;
+    private javax.swing.JTextField jCreateId;
+    private javax.swing.JButton jCreateUser;
     private javax.swing.JTextArea jExtensionRequest;
+    private javax.swing.JTextField jFirstName;
     private javax.swing.JTextArea jInfo;
+    private javax.swing.JTextField jLastName;
     private javax.swing.JButton jLogOut;
     private javax.swing.JTextArea jMessageField;
     private javax.swing.JTextArea jNews;
@@ -819,6 +975,8 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPasswordField jPass;
     private javax.swing.JRadioButton jRad1;
     private javax.swing.JRadioButton jRad2;
     private javax.swing.JButton jReject;
@@ -832,6 +990,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JButton jSendButton;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
@@ -840,6 +999,10 @@ public class AdminMenu extends javax.swing.JFrame {
     private java.awt.Label label10;
     private java.awt.Label label11;
     private java.awt.Label label12;
+    private java.awt.Label label13;
+    private java.awt.Label label14;
+    private java.awt.Label label15;
+    private java.awt.Label label16;
     private java.awt.Label label2;
     private java.awt.Label label3;
     private java.awt.Label label4;

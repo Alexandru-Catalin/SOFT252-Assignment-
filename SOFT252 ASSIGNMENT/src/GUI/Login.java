@@ -136,7 +136,6 @@ public class Login extends javax.swing.JFrame {
         jUserId = new javax.swing.JTextField();
         jPass = new javax.swing.JPasswordField();
         Login = new javax.swing.JButton();
-        jRegister = new javax.swing.JButton();
         label1 = new java.awt.Label();
         label2 = new java.awt.Label();
         label3 = new java.awt.Label();
@@ -163,13 +162,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jRegister.setText("Register");
-        jRegister.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRegisterActionPerformed(evt);
-            }
-        });
-
         label1.setText("Password");
 
         label2.setText("Wellcome in Librari");
@@ -180,32 +172,29 @@ public class Login extends javax.swing.JFrame {
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelLayout.createSequentialGroup()
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPass, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanelLayout.createSequentialGroup()
-                            .addGap(162, 162, 162)
-                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanelLayout.createSequentialGroup()
-                            .addGap(110, 110, 110)
-                            .addComponent(jUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
-                .addContainerGap(88, Short.MAX_VALUE)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
-                        .addComponent(Login)
-                        .addGap(69, 69, 69)
-                        .addComponent(jRegister)
-                        .addGap(93, 93, 93))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
-                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(139, 139, 139))))
+                .addContainerGap(131, Short.MAX_VALUE)
+                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(139, 139, 139))
             .addGroup(jPanelLayout.createSequentialGroup()
                 .addGap(154, 154, 154)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanelLayout.createSequentialGroup()
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jPass, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelLayout.createSequentialGroup()
+                                .addGap(162, 162, 162)
+                                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelLayout.createSequentialGroup()
+                                .addGap(110, 110, 110)
+                                .addComponent(jUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanelLayout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(Login)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,9 +210,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRegister)
-                    .addComponent(Login))
+                .addComponent(Login)
                 .addGap(51, 51, 51))
         );
 
@@ -282,10 +269,14 @@ public class Login extends javax.swing.JFrame {
                     clientUi.setMessageList(messageList);
                     clientUi.setup();
                     clientUi.setAdminLog(adminLog);
+                    clientUi.setClientLog(clientLog);
                     jUserId.setText("");
                     jPass.setText("");
                     return;
                 }   
+                else{
+                    JOptionPane.showMessageDialog(this, "Wrong Password");
+                }
             }        
         }    
         
@@ -311,19 +302,19 @@ public class Login extends javax.swing.JFrame {
                     adminUi.setItemList(itemList);
                     adminUi.setMessageList(messageList);  
                     adminUi.setAdmminLog(adminLog);
+                    adminUi.setClientLog(clientLog);
                     jUserId.setText("");
                     jPass.setText("");
                     return;
                 }   
+                else {
+                    JOptionPane.showMessageDialog(this, "Wrong Password");
+                }
             }        
         }    
         
     }//GEN-LAST:event_LoginActionPerformed
     
-    private void jRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegisterActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRegisterActionPerformed
-
     private void jUserIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUserIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jUserIdActionPerformed
@@ -376,7 +367,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton Login;
     private javax.swing.JPanel jPanel;
     private javax.swing.JPasswordField jPass;
-    private javax.swing.JButton jRegister;
     private javax.swing.JTextField jUserId;
     private java.awt.Label label1;
     private java.awt.Label label2;
