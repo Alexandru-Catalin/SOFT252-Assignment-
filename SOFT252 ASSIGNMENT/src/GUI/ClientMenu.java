@@ -112,7 +112,7 @@ public class ClientMenu extends javax.swing.JFrame {
         
         for (Items i : itemList){
             
-            itemData += i.getId() + i.getTitle() + " " + i.getBorrowInf().getReturnDate() + " " + i.getRating() + "Stars" + "\n";
+            itemData += i.getId() + i.getTitle() + " " + i.getBorrowInf().getReturnDate() + " " + i.getRating() + "Stars, " + i.getCategory() + "\n";
             
         }
                         
@@ -129,7 +129,7 @@ public class ClientMenu extends javax.swing.JFrame {
         
         for (Items i : itemList){
             
-            itemData += i.getId() + i.getTitle() + " " + i.getBorrowInf().getReturnDate() + " " + i.getRating() + "Stars" + "\n";
+            itemData += i.getId() + i.getTitle() + " " + i.getBorrowInf().getReturnDate() + " " + i.getRating() + "Stars, " + i.getCategory() + "\n";
             
         }
                         
@@ -642,10 +642,10 @@ public class ClientMenu extends javax.swing.JFrame {
         jBorrowList.setText("");
         jSearchItem.setText("");
         jReturnItem.setText("");
-        jClientItems.setText("");
         jReturnField.setText("");
         jExtension.setText("");
         jExtensionField.setText("");
+        jResourceField.setText("");
         
     }//GEN-LAST:event_jLogOutActionPerformed
 

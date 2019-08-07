@@ -13,8 +13,9 @@ import Controller.State;
  */
 public class DVDs extends Items{
     
-    public DVDs(int idNum, String name, int type, State state, float rating, int extension) {
-        super(idNum, name, type, state, rating, extension);
+    public DVDs(int idNum, String name, State state, float rating, int extension) {
+        super(idNum, name,  state, rating, extension);
+        this.setCategory("DVD");
     }
     
 

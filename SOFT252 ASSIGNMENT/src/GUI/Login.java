@@ -9,10 +9,10 @@ import Controller.State;
 import Librari.Admin;
 import Librari.Books;
 import Librari.Client;
+import Librari.DVDs;
 import Librari.Items;
 import Librari.Message;
 import Librari.ReturnState;
-import Librari.User;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -51,15 +51,21 @@ public class Login extends javax.swing.JFrame {
         
         State state = new ReturnState();
         float rating = 0f;
-        Books a = new Books(0," Book1",0, state, rating, 0);
-        Books s = new Books(1," Book2",0,state, rating, 0);
-        Books d = new Books(2," Book3",0,state, rating, 0);
-        Books f = new Books(3," Book4",0,state, rating, 0);
+        Books a = new Books(0," The Raven", state, rating, 0);
+        Books s = new Books(1," Book Of Secrets",state, rating, 0);
+        Books d = new Books(2," Best Magicians",state, rating, 0);
+        Books f = new Books(3," The Adventures of Corvus Corax",state, rating, 0);
+        
+        DVDs e = new DVDs(4," The Adventures of Corvus Corax",state, rating, 0);
+        
+        System.out.println(f.getCategory());
+        System.out.println(e.getCategory());
         
         itemList.add(a);
         itemList.add(s);
         itemList.add(d);
         itemList.add(f);
+        itemList.add(e);
     }
 
     public ArrayList<Client> getClientLog() {

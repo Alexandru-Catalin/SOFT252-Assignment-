@@ -276,16 +276,20 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jBId" max="32767" attributes="0"/>
                                       <Component id="jBookName" alignment="1" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="0" pref="341" max="32767" attributes="0"/>
-                                          <Component id="jCreate" min="-2" max="-2" attributes="0"/>
-                                      </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="label6" min="-2" max="-2" attributes="0"/>
                                               <Component id="label7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="label17" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jBook" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jDVD" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jCreate" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="207" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -313,8 +317,14 @@
                                   <Component id="label7" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                   <Component id="jBookName" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jCreate" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="label17" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jBook" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jDVD" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jCreate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -373,6 +383,21 @@
                 <Component class="java.awt.Label" name="label7">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Name"/>
+                  </Properties>
+                </Component>
+                <Component class="java.awt.Label" name="label17">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Type of ressource"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="jBook">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="BOOK"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="jDVD">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="DVD"/>
                   </Properties>
                 </Component>
               </SubComponents>

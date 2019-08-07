@@ -18,16 +18,15 @@ public class Items implements Serializable{
     private State state;
     int id;
     private String title;
-    private int category;
+    private String category;
     private Borrow borrowInf;
     private float rating;
     private ArrayList<UserRating> userRating;
     private int extension;
     
-    public Items(int idNum, String name, int type, State state, float rating, int extensionPeriod){
+    public Items(int idNum, String name, State state, float rating, int extensionPeriod){
         id=idNum;
         title = name;
-        category = type;
         borrowInf = new Borrow();
         this.state = state;
         rating = 0;
@@ -79,11 +78,11 @@ public class Items implements Serializable{
         this.id = id;
     }
     
-    public int getCategory(){
+    public String getCategory(){
         return category;
     }
     
-    public void setCategory(int category){
+    public void setCategory(String category){
         this.category = category;
     }
     

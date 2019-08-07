@@ -9,6 +9,7 @@ import Controller.State;
 import Librari.Admin;
 import Librari.Books;
 import Librari.Client;
+import Librari.DVDs;
 import Librari.Items;
 import Librari.Message;
 import Librari.ReturnState;
@@ -30,6 +31,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private ArrayList<Message> clientRequest;
     private ArrayList<Message> newsList;
     private ButtonGroup bg = new ButtonGroup();
+    private ButtonGroup tg = new ButtonGroup();
     private ArrayList<Items> itemList;
     private ArrayList<Items> infoList;
     private ArrayList<Message> messageList;
@@ -56,6 +58,10 @@ public class AdminMenu extends javax.swing.JFrame {
         this.admminLog = admminLog;
     }
 
+    public void typeButton(){
+        tg.add(jBook);
+        tg.add(jDVD);
+    }
     
     public void groupButton(){
         bg.add(jRad1);
@@ -125,7 +131,7 @@ public class AdminMenu extends javax.swing.JFrame {
         
         for (Items i : itemList){
             
-            itemData += i.getId() + i.getTitle() + " " + i.getBorrowInf().getReturnDate() + " " + i.getRating() + "Stars" + "\n";
+            itemData += i.getId() + i.getTitle() + " " + i.getBorrowInf().getReturnDate() + " " + i.getRating() + "Stars, " + i.getCategory() + "\n";
             
         }
         jCheck.setText(itemData);
@@ -185,6 +191,9 @@ public class AdminMenu extends javax.swing.JFrame {
         jBookName = new javax.swing.JTextField();
         label6 = new java.awt.Label();
         label7 = new java.awt.Label();
+        label17 = new java.awt.Label();
+        jBook = new javax.swing.JRadioButton();
+        jDVD = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jNews = new javax.swing.JTextArea();
@@ -353,6 +362,12 @@ public class AdminMenu extends javax.swing.JFrame {
 
         label7.setText("Name");
 
+        label17.setText("Type of ressource");
+
+        jBook.setText("BOOK");
+
+        jDVD.setText("DVD");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -371,14 +386,18 @@ public class AdminMenu extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jBId)
                             .addComponent(jBookName, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 341, Short.MAX_VALUE)
-                                .addComponent(jCreate))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jBook)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jDVD)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jCreate)))
+                                .addGap(0, 207, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -399,8 +418,13 @@ public class AdminMenu extends javax.swing.JFrame {
                         .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)
                         .addComponent(jBookName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCreate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBook)
+                            .addComponent(jDVD)
+                            .addComponent(jCreate))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -788,9 +812,16 @@ public class AdminMenu extends javax.swing.JFrame {
                
         if(check == false)
         {
-            Books m = new Books(Integer.parseInt(jBId.getText())," " + jBookName.getText(),0, state, rating, 0);
-            JOptionPane.showMessageDialog(this, "Resource Created");
-            itemList.add(m);
+            if (jBook.isSelected()) {
+                Books m = new Books(Integer.parseInt(jBId.getText())," " + jBookName.getText(), state, rating, 0);
+                itemList.add(m);
+            }
+            else if (jDVD.isSelected()){
+                DVDs d = new DVDs(Integer.parseInt(jBId.getText())," " + jBookName.getText(), state, rating, 0);
+                itemList.add(d);
+            }
+                JOptionPane.showMessageDialog(this, "Resource Created");
+            
         }
         else
         {
@@ -950,6 +981,7 @@ public class AdminMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAccept;
     private javax.swing.JTextField jBId;
+    private javax.swing.JRadioButton jBook;
     private javax.swing.JTextField jBookId;
     private javax.swing.JTextField jBookName;
     private javax.swing.JButton jButton1;
@@ -963,6 +995,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton jCreate;
     private javax.swing.JTextField jCreateId;
     private javax.swing.JButton jCreateUser;
+    private javax.swing.JRadioButton jDVD;
     private javax.swing.JTextArea jExtensionRequest;
     private javax.swing.JTextField jFirstName;
     private javax.swing.JTextArea jInfo;
@@ -1003,6 +1036,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private java.awt.Label label14;
     private java.awt.Label label15;
     private java.awt.Label label16;
+    private java.awt.Label label17;
     private java.awt.Label label2;
     private java.awt.Label label3;
     private java.awt.Label label4;
