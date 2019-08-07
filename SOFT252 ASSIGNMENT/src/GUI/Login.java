@@ -13,6 +13,7 @@ import Librari.DVDs;
 import Librari.Items;
 import Librari.Message;
 import Librari.ReturnState;
+import Librari.Seriliaser;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -35,7 +36,11 @@ public class Login extends javax.swing.JFrame {
     private ArrayList<Message> messageList;
     private ArrayList<Client> clientLog;
     private ArrayList<Admin> adminLog;
+    private ArrayList<Items> extensionList;
+    private ArrayList<Items> borrowList;
     
+    
+    //Creating the ressources and storing them.
     public Login() {
         initComponents();
         
@@ -51,23 +56,94 @@ public class Login extends javax.swing.JFrame {
         
         State state = new ReturnState();
         float rating = 0f;
-        Books a = new Books(0," The Raven", state, rating, 0);
-        Books s = new Books(1," Book Of Secrets",state, rating, 0);
-        Books d = new Books(2," Best Magicians",state, rating, 0);
-        Books f = new Books(3," The Adventures of Corvus Corax",state, rating, 0);
+        Books h = new Books(1," Learn C++",state, rating, 0);
+        DVDs p = new DVDs(2," Java For Everyone",state, rating, 0);
+        Books c = new Books(3," My First Game",state, rating, 0);
+        Books a = new Books(800," The Raven", state, rating, 0);
+        Books s = new Books(801," Book Of Secrets",state, rating, 0);
+        Books d = new Books(802," Best Magicians",state, rating, 0);
+        Books f = new Books(803," The Adventures of Corvus Corax",state, rating, 0);
+        Books g = new Books(400," Learn Japanese",state, rating, 0);
         
-        DVDs e = new DVDs(4," Best Friends",state, rating, 0);
+        Books i = new Books(900," World War 2",state, rating, 0);
+        Books k = new Books(808," Room 408",state, rating, 0);
+        Books l = new Books(700," Best Painters",state, rating, 0);
+        
+        Books v = new Books(903," Dinosaurs",state, rating, 0);
+        
+        DVDs e = new DVDs(804," Best Friends",state, rating, 0);
+        DVDs r = new DVDs(805," Skeleton Army",state, rating, 0);
+        DVDs t = new DVDs(806," Monster World",state, rating, 0);
+        DVDs y = new DVDs(807," Vampires Night",state, rating, 0);
+        DVDs j = new DVDs(500," Atomic Bomb",state, rating, 0); 
+        DVDs o = new DVDs(901," World War 1",state, rating, 0);
+        
+        DVDs z = new DVDs(902," Life of Boris",state, rating, 0);
+        DVDs x = new DVDs(100," Psychology Explained for Everyone",state, rating, 0);
         
         System.out.println(f.getCategory());
         System.out.println(e.getCategory());
         
-        itemList.add(a);
-        itemList.add(s);
-        itemList.add(d);
+        itemList.add(h);
+        itemList.add(p);
+        itemList.add(c);
         itemList.add(f);
         itemList.add(e);
+        itemList.add(r);
+        itemList.add(t);
+        itemList.add(y);
+        itemList.add(g);
+        itemList.add(a);
+        itemList.add(j);
+        itemList.add(i);
+        itemList.add(o);
+        itemList.add(s);
+        itemList.add(k);
+        itemList.add(l);
+        itemList.add(z);
+        itemList.add(x);
+        itemList.add(d);
+        itemList.add(v);
+        
+        
+        //Locate/Read the data.
+        
+        Seriliaser itemLt = new Seriliaser("Items.ser");
+ 
+        itemList = (ArrayList<Items>) itemLt.readList();
+        
+        Seriliaser clientLt = new Seriliaser("Clients.ser");
+        clientLog = (ArrayList<Client>) clientLt.readList();
+        
+        Seriliaser newsLt = new Seriliaser("News.ser");
+        newsList = (ArrayList<Message>) newsLt.readList();
+        
+        Seriliaser extLt = new Seriliaser("Extension.ser");
+        extensionList = (ArrayList<Items>) extLt.readList();
+        
+        Seriliaser borrowLt = new Seriliaser("Borrow.ser");
+        borrowList = (ArrayList<Items>) borrowLt.readList();
+        
+        Seriliaser adminLt = new Seriliaser("AdminMessages.ser");
+        adminMessage = (ArrayList<Message>) adminLt.readList();
     }
 
+    public ArrayList<Items> getBorrowList() {
+        return borrowList;
+    }
+
+    public void setBorrowList(ArrayList<Items> borrowList) {
+        this.borrowList = borrowList;
+    }
+    
+    public ArrayList<Items> getExtensionList() {
+        return extensionList;
+    }
+
+    public void setExtensionList(ArrayList<Items> extensionList) {
+        this.extensionList = extensionList;
+    }
+    
     public ArrayList<Client> getClientLog() {
         return clientLog;
     }
@@ -235,17 +311,20 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //Creates 5 clients with different ID's, when the Login button is pressed it will check if the ID is corresponding to the password. Also checking if its a client or an admin.
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
         jUserId.getText();
         jPass.getPassword();
         
-        Client c = new Client(100, "Corax", "Corvus", "");
+        Client c = new Client(100, "Dan", "Dan", "Dan");
         Client v = new Client(101, "James", "James", "James");
-        Client b = new Client(102, "Alex", "Catalin", "");
-        Client n = new Client(103, "Elena", "Elena", "");
-        Client m = new Client(104, "Georgiana", "Georgiana", "");
-        Admin a = new Admin(1, "Vulturul", "Vulturul", "Vulturul");
+        Client b = new Client(102, "Alex", "Alex", "Alex");
+        Client n = new Client(103, "Bob", "Bob", "Bob");
+        Client m = new Client(104, "Paul", "Paul", "");
+        
+        Admin a = new Admin(1, "Corvus", "Corvus", "Corvus");
         
         adminLog.add(a);
         clientLog.add(c);

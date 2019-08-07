@@ -11,6 +11,8 @@ import java.util.ArrayList;
  *
  * @author amarcu
  */
+
+//Creating the clients subclass that extends the User superclass
 public class Client extends User {
     
     private ArrayList<Items> borrowClientList; 
@@ -18,6 +20,7 @@ public class Client extends User {
     
     public Client(int id, String password, String firstName, String lastName){
         super(id, password, firstName, lastName);
+        //creating a special list of items, that will display the owned item only for the client that own that item. (in his inventory)
         this.borrowClientList = new ArrayList<Items>();
         this.clientMessage = new ArrayList<Message>();
     } 

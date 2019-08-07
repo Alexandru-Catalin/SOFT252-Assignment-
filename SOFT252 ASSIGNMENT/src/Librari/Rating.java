@@ -11,6 +11,8 @@ import java.util.ArrayList;
  *
  * @author amarcu
  */
+
+//Creating the Rating system.
 public class Rating{
     
     private float rating;

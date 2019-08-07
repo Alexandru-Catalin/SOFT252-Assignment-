@@ -12,6 +12,8 @@ import java.time.LocalDate;
  *
  * @author amarcu
  */
+
+//Checking if an item its borroed or not, seting extensions/taxes/borrowing time.
 public class Borrow implements Serializable{
     
     private Boolean isBorrowed = false;
@@ -88,7 +90,7 @@ public class Borrow implements Serializable{
         this.extension = extention;
     }
     
-    
+    //Creating the extension method
     public void extensionAdd(int borrowingTime){
         int extension;
         
@@ -103,6 +105,8 @@ public class Borrow implements Serializable{
         this.returnDate = returnDate.plusDays(extension);
     }
     
+    
+    //Checking if an item its borrowed or not, and set the length of borrowing period for the Client that chan choose between 2weeks or 6 months
     public void userBorrow(int userID, int borrowingTime)
     {
         int borrowDate;
@@ -125,6 +129,8 @@ public class Borrow implements Serializable{
         this.extension = 0;
     }
     
+    
+    //Check if an item tis overdue, If yes calculate the difference between the day it was borrow and return date and add taxes to it.
     public void checkOverdue(LocalDate currentDate)
     {
         if(returnDate.isBefore(currentDate))
@@ -136,6 +142,7 @@ public class Borrow implements Serializable{
         }
     }
     
+    //Return items to the library, if an item its overdue the client can not return the items, first he have to pay the taxes for the overdue item and then return the rest of them.
     public void returnDate()
     {
         if(overdueDate == true)

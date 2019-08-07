@@ -11,6 +11,8 @@ import java.util.ArrayList;
  *
  * @author amarcu
  */
+
+//Creating the messages system, to be able to send messages as a client to the admin, and an admin to be able to send news/messages to the clients.
 public class Message {
     
     private String requestMessage;

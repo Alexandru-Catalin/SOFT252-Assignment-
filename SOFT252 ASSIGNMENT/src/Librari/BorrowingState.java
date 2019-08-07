@@ -6,12 +6,15 @@
 package Librari;
 
 import Controller.State;
+import java.io.Serializable;
 
 /**
  *
  * @author amarcu
  */
-public class BorrowingState implements State{
+
+//Creating the borrowing state using State pattern.
+public class BorrowingState implements State,Serializable{
 
     @Override
     public void BorrowItem(Items i, Client c, int length) {

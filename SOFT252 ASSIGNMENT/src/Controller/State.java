@@ -13,6 +13,7 @@ import Librari.Items;
  *
  * @author amarcu
  */
+//Using State pattern to be able to borrow and return Items
 public interface State {
     
     public void BorrowItem(Items i, Client c, int length);

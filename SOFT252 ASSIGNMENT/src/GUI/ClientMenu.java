@@ -9,6 +9,7 @@ import Librari.Admin;
 import Librari.Client;
 import Librari.Items;
 import Librari.Message;
+import Librari.Seriliaser;
 import Librari.User;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -68,6 +69,8 @@ public class ClientMenu extends javax.swing.JFrame {
         this.adminMessage = adminMessage;
     }
     
+    
+    
     private void groupButton(){
         bg.add(jRad1);
         bg.add(jRad2);
@@ -108,7 +111,7 @@ public class ClientMenu extends javax.swing.JFrame {
         
         String itemData = "";
         
-        
+        //Print all the Items in the ClientMenu witht their own ID.
         
         for (Items i : itemList){
             
@@ -140,6 +143,7 @@ public class ClientMenu extends javax.swing.JFrame {
         return messageList;
     }
 
+    //Receive admin private messages.
     public void setMessageList(ArrayList<Message> messageList) {
         this.messageList = messageList;
         
@@ -160,6 +164,7 @@ public class ClientMenu extends javax.swing.JFrame {
         return newsList;
     }
 
+    //Receive admin news (for all the clients).
     public void setNewsList(ArrayList<Message> newsList) {
         this.newsList = newsList;
         String news = "";
@@ -630,6 +635,8 @@ public class ClientMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //When the LogOut button its pressed, i m clearing all the text areas and saving the lists to display them on the next run of the program.
     private void jLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogOutActionPerformed
      
         this.setVisible(false);
@@ -643,8 +650,23 @@ public class ClientMenu extends javax.swing.JFrame {
         jResourceField.setText("");
         jClientItems.setText("");
         
+        Seriliaser itemLt = new Seriliaser("Items.ser");
+        itemLt.writeList(itemList);
+        Seriliaser clientLt = new Seriliaser("Clients.ser");
+        clientLt.writeList(clientLog);
+        Seriliaser newsLt = new Seriliaser("News.ser");
+        newsLt.writeList(newsList);
+        Seriliaser extLt = new Seriliaser("Extension.ser");
+        extLt.writeList(extensionList);
+        Seriliaser borrowLt = new Seriliaser("Borrow.ser");
+        borrowLt.writeList(borrowList);
+        Seriliaser adminLt = new Seriliaser("AdminMessages.ser");
+        adminLt.writeList(adminMessage);
+        
     }//GEN-LAST:event_jLogOutActionPerformed
 
+    
+    //Check the input ID with the resource id and move it in to the extention request field
     private void jMoveExtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMoveExtActionPerformed
         jClientItems.getText();
         jReturnItem.getText();
@@ -684,6 +706,8 @@ public class ClientMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jRad1ActionPerformed
 
+    
+    //Send a message to the Admin to request a new resource to be added to the librari.
     private void jResourcesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jResourcesActionPerformed
 
         jResourceField.getText();
@@ -699,6 +723,8 @@ public class ClientMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jResourcesActionPerformed
 
+    
+    //Send an extension request to the admin, with the period that the cliend would like to extend his borrowing time.
     private void jRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRequestActionPerformed
 
         jExtensionField.getText();
@@ -742,6 +768,8 @@ public class ClientMenu extends javax.swing.JFrame {
         adminMessage.add(e);
     }//GEN-LAST:event_jRequestActionPerformed
 
+    
+    //Rateing the book using radio buttons from 1 to 5, and move the book in to the Return Field, where it also check if the item is overdue and if the clients need to pay an extra tax.
     private void jItemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItemButtonActionPerformed
         // TODO add your handling code here:
 
@@ -803,6 +831,8 @@ public class ClientMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jReturnItemActionPerformed
 
+    
+    //Make the payment for the Tax(if necessary) and return the resource in to the librari.
     private void jReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jReturnButtonActionPerformed
 
         jReturnField.getText();
@@ -878,6 +908,8 @@ public class ClientMenu extends javax.swing.JFrame {
         returnList.clear();
     }//GEN-LAST:event_jReturnButtonActionPerformed
 
+    
+    //Borrow and add the resource to the client. (the book its storying all the client details, admin checking them easyer).
     private void jBorrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBorrowActionPerformed
         // TODO add your handling code here:
         jBorrowList.getText();
@@ -921,6 +953,8 @@ public class ClientMenu extends javax.swing.JFrame {
         borrowList.clear();
     }//GEN-LAST:event_jBorrowActionPerformed
 
+    
+    //Borrow an item by ID, and check if that item its already borrowed by another client.
     private void jSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSearchButtonActionPerformed
         jSearchItem.getText();
         jSearch.getText();

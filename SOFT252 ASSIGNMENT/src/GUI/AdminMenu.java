@@ -13,6 +13,7 @@ import Librari.DVDs;
 import Librari.Items;
 import Librari.Message;
 import Librari.ReturnState;
+import Librari.Seriliaser;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
@@ -26,6 +27,8 @@ public class AdminMenu extends javax.swing.JFrame {
     /**
      * Creates new form AdminMenu
      */
+    
+    //Creating Lists to store data to be able to display it on UI.
     private Login loginUi;
     private ArrayList<Message> adminMessage;
     private ArrayList<Message> clientRequest;
@@ -91,6 +94,7 @@ public class AdminMenu extends javax.swing.JFrame {
         this.newsList = newsList; 
     }
     
+    //Saving the client message, to be displayed on adminMenu, admin beeing able to create the resource.
     public void setClientRequest(ArrayList<Message> clientRequest) {
         this.clientRequest = clientRequest;
         
@@ -103,6 +107,7 @@ public class AdminMenu extends javax.swing.JFrame {
         jResoursesField.setText(clientList);
     }
 
+    
     public AdminMenu(Login l) {
         
         initComponents();
@@ -118,6 +123,7 @@ public class AdminMenu extends javax.swing.JFrame {
         return itemList;
     }
 
+    //Saving the Books and DVDs in a list that is displayed on ClientMenu.
     public void setItemList(ArrayList<Items> itemList) {
         this.itemList = itemList;
         String itemData = "";
@@ -134,6 +140,7 @@ public class AdminMenu extends javax.swing.JFrame {
         return adminMessage;
     }
 
+    
     public void setAdminMessage(ArrayList<Message> adminMessage) {
         this.adminMessage = adminMessage;
         
@@ -710,6 +717,9 @@ public class AdminMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    //Reject a Client Extension
     private void jRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRejectActionPerformed
         // TODO add your handling code here:
         jUserId.getText();
@@ -731,6 +741,8 @@ public class AdminMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jRejectActionPerformed
 
+    
+    //Accept a Client Extension
     private void jAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAcceptActionPerformed
       
         jUserId.getText();
@@ -776,12 +788,25 @@ public class AdminMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jUserIdActionPerformed
 
+    
+    //Saveing list of items/clients/messages everytime when LogOut button is pressed.
     private void jLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogOutActionPerformed
         // TODO add your handling code here:
          this.setVisible(false);
         loginUi.setVisible(true);
+        
+        Seriliaser itemLt = new Seriliaser("Items.ser");
+        itemLt.writeList(itemList);
+        Seriliaser clientLt = new Seriliaser("Clients.ser");
+        clientLt.writeList(clientLog);
+        Seriliaser newsLt = new Seriliaser("News.ser");
+        newsLt.writeList(newsList);
+        Seriliaser adminLt = new Seriliaser("AdminMessages.ser");
+        adminLt.writeList(adminMessage);
     }//GEN-LAST:event_jLogOutActionPerformed
 
+    
+    //Checking the Id of the Books and DVDs to be able to create a new resource with a different ID.
     private void jCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCreateActionPerformed
 
          State state = new ReturnState();
@@ -797,8 +822,7 @@ public class AdminMenu extends javax.swing.JFrame {
             }
            
         }
-               
-               
+                        
         if(check == false)
         {
             if (jBook.isSelected()) {
@@ -823,6 +847,8 @@ public class AdminMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBIdActionPerformed
 
+    
+    //Printing the status of a resource (Id of the resource + borrowing time + the client that own it + etc)
     private void jCheckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckButtonActionPerformed
         jCheckArea.getText();
         String status = "";
@@ -837,6 +863,8 @@ public class AdminMenu extends javax.swing.JFrame {
         jCheckArea.setText(status);
     }//GEN-LAST:event_jCheckButtonActionPerformed
 
+    
+    //Send a reminder to a specific Client by the cliend ID
     private void jSendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSendButtonActionPerformed
         String message = "";
         
@@ -851,6 +879,8 @@ public class AdminMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jSendButtonActionPerformed
 
+    
+    //Sending public messages(news) to all the clients
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      String news = "";
         
@@ -864,6 +894,8 @@ public class AdminMenu extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(this, "News Sent");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    //Sending a private message to specific Client by the client ID
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       String message = "";
         
@@ -878,6 +910,9 @@ public class AdminMenu extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(this, "Message Sent");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    
+    //Check the ID of all the clients to be able to create a new Client with a new id. Admin id will be 1, Clients ID's will be over 99
+    //It's also checking if the id its <99 and >99 to be able to create the new Client
     private void jCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCreateUserActionPerformed
 
         jCreateId.getText();

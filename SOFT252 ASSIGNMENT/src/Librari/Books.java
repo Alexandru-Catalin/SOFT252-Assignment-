@@ -11,6 +11,7 @@ import Controller.State;
  *
  * @author amarcu
  */
+//Creating Books subclass extending the superclass Items
 public class Books extends Items {
     
     public Books(int idNum, String name, State state, float rating, int extension) {

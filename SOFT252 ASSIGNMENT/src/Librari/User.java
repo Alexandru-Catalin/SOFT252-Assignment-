@@ -11,6 +11,8 @@ import java.io.Serializable;
  *
  * @author amarcu
  */
+
+//Creating the superClass User that store all the details of a client/admin
 public abstract class User implements Observer, Serializable {
     private int id;
     private String password;

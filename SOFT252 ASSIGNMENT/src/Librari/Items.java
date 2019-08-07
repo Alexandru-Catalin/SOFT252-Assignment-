@@ -14,6 +14,8 @@ import java.util.ArrayList;
  *
  * @author amarcu
  */
+
+//Creating the Superclass Items that save all the details of an item, the clients details beeing stored on the item when its borrowed.
 public class Items implements Serializable{
     private State state;
     int id;
@@ -111,6 +113,8 @@ public class Items implements Serializable{
         state.ReturnItem(this);
     }
     
+    
+    //Creating and displaying the user Rating from 1 to 5 using radio buttons
     public void addUserRating(int userVote, int userId)
     {
         int starRate;
@@ -160,6 +164,8 @@ public class Items implements Serializable{
         extension = extensionVote;
     }
     
+    
+    //Search for user Rating, so an user that rate a book will not be able to rate the same book 2 times.
     public int searchUserRating(int id)
     {
         for (UserRating i : userRating)

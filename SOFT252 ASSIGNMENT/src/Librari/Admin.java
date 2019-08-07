@@ -8,6 +8,7 @@ package Librari;
  *
  * @author amarcu
  */
+//Creating admin subclass of User(superclass).
 public class Admin extends User {
     
     public Admin(int id, String password, String firstName, String lastName){

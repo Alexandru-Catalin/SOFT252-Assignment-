@@ -11,6 +11,7 @@ import Controller.State;
  *
  * @author amarcu
  */
+//Creating DVDs subbclass extending Items superclass
 public class DVDs extends Items{
     
     public DVDs(int idNum, String name, State state, float rating, int extension) {

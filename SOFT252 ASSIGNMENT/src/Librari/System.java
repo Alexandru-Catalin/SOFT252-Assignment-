@@ -10,6 +10,8 @@ import java.time.LocalDate;
  *
  * @author amarcu
  */
+
+//Creating a system to be able to read the currentDate (to be able to calculate the borrowing length and taxes).
 public class System {
     
     private LocalDate currentDate;
