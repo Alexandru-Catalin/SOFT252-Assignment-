@@ -938,6 +938,7 @@ public class ClientMenu extends javax.swing.JFrame {
                         i.ReturnState();
                         System.out.println("Returned");
                         isFound = true;
+                        c.getBorrowClientList().remove(i);
                     }
                 }
                 else
@@ -949,6 +950,7 @@ public class ClientMenu extends javax.swing.JFrame {
                         i.ReturnState();
                         System.out.println("Returned");
                         isFound = true;
+                        c.getBorrowClientList().remove(i);
                     }
                 }
                 jReturnButton.setText("Return");
