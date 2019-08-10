@@ -736,10 +736,6 @@ public class ClientMenu extends javax.swing.JFrame {
         clientLt.writeList(clientLog);
         Seriliaser newsLt = new Seriliaser("News.ser");
         newsLt.writeList(newsList);
-        Seriliaser extLt = new Seriliaser("Extension.ser");
-        extLt.writeList(extensionList);
-        Seriliaser borrowLt = new Seriliaser("Borrow.ser");
-        borrowLt.writeList(borrowList);
         Seriliaser adminLt = new Seriliaser("AdminMessages.ser");
         adminLt.writeList(adminMessage);
         

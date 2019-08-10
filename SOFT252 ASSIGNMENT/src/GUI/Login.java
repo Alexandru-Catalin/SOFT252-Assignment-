@@ -122,12 +122,6 @@ public class Login extends javax.swing.JFrame {
         Seriliaser newsLt = new Seriliaser("News.ser");
         newsList = (ArrayList<Message>) newsLt.readList();
         
-        Seriliaser extLt = new Seriliaser("Extension.ser");
-        extensionList = (ArrayList<Items>) extLt.readList();
-        
-        Seriliaser borrowLt = new Seriliaser("Borrow.ser");
-        borrowList = (ArrayList<Items>) borrowLt.readList();
-        
         Seriliaser adminLt = new Seriliaser("AdminMessages.ser");
         adminMessage = (ArrayList<Message>) adminLt.readList();
     }
