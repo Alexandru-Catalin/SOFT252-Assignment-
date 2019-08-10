@@ -14,6 +14,14 @@ import Controller.State;
 //Creating Books subclass extending the superclass Items
 public class Books extends Items {
     
+    /**
+     *
+     * @param idNum
+     * @param name
+     * @param state
+     * @param rating
+     * @param extension
+     */
     public Books(int idNum, String name, State state, float rating, int extension) {
         super(idNum, name, state, rating, extension);
         this.setCategory("BOOK");

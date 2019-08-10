@@ -16,6 +16,12 @@ import java.io.Serializable;
 //Creating the ReturnState using State pattern.
 public class ReturnState implements State,Serializable{
 
+    /**
+     *
+     * @param i
+     * @param c
+     * @param length
+     */
     @Override
     public void BorrowItem(Items i, Client c, int length) 
     {
@@ -30,6 +36,9 @@ public class ReturnState implements State,Serializable{
         i.setState(this);
     }
 
+    /**
+     *
+     */
     @Override
     public void printState() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -26,6 +26,14 @@ public class Items implements Serializable{
     private ArrayList<UserRating> userRating;
     private int extension;
     
+    /**
+     *
+     * @param idNum
+     * @param name
+     * @param state
+     * @param rating
+     * @param extensionPeriod
+     */
     public Items(int idNum, String name, State state, float rating, int extensionPeriod){
         id=idNum;
         title = name;
@@ -36,85 +44,158 @@ public class Items implements Serializable{
         extension = 0;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getExtension() {
         return extension;
     }
 
+    /**
+     *
+     * @param extension
+     */
     public void setExtension(int extension) {
         this.extension = extension;
     }
 
-   
-    
+    /**
+     *
+     * @return
+     */
     public Borrow getBorrowInf() {
         return borrowInf;
     }
 
+    /**
+     *
+     * @param borrowInf
+     */
     public void setBorrowInf(Borrow borrowInf) {
         this.borrowInf = borrowInf;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getRating() {
         return rating;
     }
 
+    /**
+     *
+     * @param rating
+     */
     public void setRating(float rating) {
         this.rating = rating;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<UserRating> getUserRating() {
         return userRating;
     }
 
+    /**
+     *
+     * @param userRating
+     */
     public void setUserRating(ArrayList<UserRating> userRating) {
         this.userRating = userRating;
     }
     
-    
-    
+    /**
+     *
+     * @return
+     */
     public int getId(){
         return id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(int id){
         this.id = id;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getCategory(){
         return category;
     }
     
+    /**
+     *
+     * @param category
+     */
     public void setCategory(String category){
         this.category = category;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getTitle(){
         return title;
     }
     
+    /**
+     *
+     * @param title
+     */
     public void setTitle(String title){
         this.title = title;
     }
    
-
-     public State getState() {
+    /**
+     *
+     * @return
+     */
+    public State getState() {
         return state;
     }
     
+    /**
+     *
+     * @param aThis
+     */
     public void setState(State aThis) {
         state = aThis;
     }
     
+    /**
+     *
+     * @param c
+     * @param length
+     */
     public void BorrowItem(Client c, int length){
         state.BorrowItem(this, c, length);
     }
     
+    /**
+     *
+     */
     public void ReturnState(){
         state.ReturnItem(this);
     }
     
     
     //Creating and displaying the user Rating from 1 to 5 using radio buttons
+
+    /**
+     *
+     * @param userVote
+     * @param userId
+     */
     public void addUserRating(int userVote, int userId)
     {
         int starRate;
@@ -149,6 +230,11 @@ public class Items implements Serializable{
         rating = averageRating / userRating.size();
     }
     
+    /**
+     *
+     * @param userId
+     * @param userExtension
+     */
     public void addExtension(int userId, int userExtension){
         
         int extensionVote;
@@ -166,6 +252,12 @@ public class Items implements Serializable{
     
     
     //Search for user Rating, so an user that rate a book will not be able to rate the same book 2 times.
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     public int searchUserRating(int id)
     {
         for (UserRating i : userRating)

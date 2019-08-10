@@ -16,6 +16,12 @@ import Librari.Items;
 //Using State pattern to be able to borrow and return Items
 public interface State {
     
+    /**
+     *
+     * @param i
+     * @param c
+     * @param length
+     */
     public void BorrowItem(Items i, Client c, int length);
 
     /**
@@ -23,6 +29,10 @@ public interface State {
      * @param i
      */
     public void ReturnItem(Items i);
+
+    /**
+     *
+     */
     public void printState();
 
 }

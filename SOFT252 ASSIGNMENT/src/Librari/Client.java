@@ -18,6 +18,13 @@ public class Client extends User {
     private ArrayList<Items> borrowClientList; 
     private ArrayList<Message> clientMessage;
     
+    /**
+     *
+     * @param id
+     * @param password
+     * @param firstName
+     * @param lastName
+     */
     public Client(int id, String password, String firstName, String lastName){
         super(id, password, firstName, lastName);
         //creating a special list of items, that will display the owned item only for the client that own that item. (in his inventory)
@@ -25,22 +32,41 @@ public class Client extends User {
         this.clientMessage = new ArrayList<Message>();
     } 
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Message> getClientMessage() {
         return clientMessage;
     }
 
+    /**
+     *
+     * @param clientMessage
+     */
     public void setClientMessage(ArrayList<Message> clientMessage) {
         this.clientMessage = clientMessage;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Items> getBorrowClientList() {
         return borrowClientList;
     }
 
+    /**
+     *
+     * @param borrowList
+     */
     public void setBorrowClientList(ArrayList<Items> borrowList) {
         this.borrowClientList = borrowList;
     }
     
+    /**
+     *
+     */
     @Override
     public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

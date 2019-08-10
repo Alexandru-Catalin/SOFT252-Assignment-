@@ -15,9 +15,22 @@ import Controller.Observer;
 
 public interface Observable {
     
-  Boolean registerObserver(Observer observer);
+    /**
+     *
+     * @param observer
+     * @return
+     */
+    Boolean registerObserver(Observer observer);
     
-  Boolean removeObserver(Observer observer);
+    /**
+     *
+     * @param observer
+     * @return
+     */
+    Boolean removeObserver(Observer observer);
     
+    /**
+     *
+     */
     void notifyObserver();
 }

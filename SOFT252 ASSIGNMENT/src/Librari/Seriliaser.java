@@ -14,18 +14,34 @@ public class Seriliaser {
     
     private String name;
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
     
+    /**
+     *
+     * @param filename
+     */
     public Seriliaser(String filename){
         name = filename;
     }
     
+    /**
+     *
+     * @return
+     */
     public Serializable readList()
     {
         Serializable loadedList = null;
@@ -45,6 +61,11 @@ public class Seriliaser {
         return loadedList;
     }
     
+    /**
+     *
+     * @param list
+     * @return
+     */
     public boolean writeList(Serializable list){
         try {
             FileOutputStream fileOut = new FileOutputStream(name);

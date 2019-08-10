@@ -16,6 +16,12 @@ import java.io.Serializable;
 //Creating the borrowing state using State pattern.
 public class BorrowingState implements State,Serializable{
 
+    /**
+     *
+     * @param i
+     * @param c
+     * @param length
+     */
     @Override
     public void BorrowItem(Items i, Client c, int length) {
         i.setState(this);
@@ -28,6 +34,9 @@ public class BorrowingState implements State,Serializable{
         
     }
 
+    /**
+     *
+     */
     @Override
     public void printState() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

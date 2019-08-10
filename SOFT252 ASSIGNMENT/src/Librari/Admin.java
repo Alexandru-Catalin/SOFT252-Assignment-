@@ -11,10 +11,20 @@ package Librari;
 //Creating admin subclass of User(superclass).
 public class Admin extends User {
     
+    /**
+     *
+     * @param id
+     * @param password
+     * @param firstName
+     * @param lastName
+     */
     public Admin(int id, String password, String firstName, String lastName){
         super(id, password, firstName, lastName);
     } 
 
+    /**
+     *
+     */
     @Override
     public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -44,27 +44,50 @@ public class ClientMenu extends javax.swing.JFrame {
     private ButtonGroup rb = new ButtonGroup();
     private ButtonGroup eb = new ButtonGroup();
 
-    
+    /**
+     *
+     * @return
+     */
     public ArrayList<Client> getClientLog() {
         return clientLog;
     }
 
+    /**
+     *
+     * @param clientLog
+     */
     public void setClientLog(ArrayList<Client> clientLog) {
         this.clientLog = clientLog;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Admin> getAdminLog() {
         return adminLog;
     }
 
+    /**
+     *
+     * @param adminLog
+     */
     public void setAdminLog(ArrayList<Admin> adminLog) {
         this.adminLog = adminLog;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Message> getAdminMessage() {
         return adminMessage;
     }
 
+    /**
+     *
+     * @param adminMessage
+     */
     public void setAdminMessage(ArrayList<Message> adminMessage) {
         this.adminMessage = adminMessage;
     }
@@ -89,6 +112,10 @@ public class ClientMenu extends javax.swing.JFrame {
         eb.add(jRE2);
     }
     
+    /**
+     *
+     * @param l
+     */
     public ClientMenu(Login l) {
           
         initComponents(); 
@@ -124,6 +151,9 @@ public class ClientMenu extends javax.swing.JFrame {
         
     }
   
+    /**
+     *
+     */
     public void setup()
     {
          String itemData = "";
@@ -139,11 +169,20 @@ public class ClientMenu extends javax.swing.JFrame {
         jSearch.setEditable(false);
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Message> getMessageList() {
         return messageList;
     }
 
     //Receive admin private messages.
+
+    /**
+     *
+     * @param messageList
+     */
     public void setMessageList(ArrayList<Message> messageList) {
         this.messageList = messageList;
         
@@ -160,11 +199,20 @@ public class ClientMenu extends javax.swing.JFrame {
     
     }
    
+    /**
+     *
+     * @return
+     */
     public ArrayList<Message> getNewsList() {
         return newsList;
     }
 
     //Receive admin news (for all the clients).
+
+    /**
+     *
+     * @param newsList
+     */
     public void setNewsList(ArrayList<Message> newsList) {
         this.newsList = newsList;
         String news = "";
@@ -174,37 +222,69 @@ public class ClientMenu extends javax.swing.JFrame {
         jNews.setText(news);     
     }
     
+    /**
+     *
+     * @param a
+     */
     public void setClient(Client a)
     {
         c = a;
     }
     
-     public void setAdminList(ArrayList<Message> messageList)
+    /**
+     *
+     * @param messageList
+     */
+    public void setAdminList(ArrayList<Message> messageList)
     {
         adminMessage = messageList;
         
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Message> getClientRequest() {
         return clientRequest;
     }
 
+    /**
+     *
+     * @param clientRequest
+     */
     public void setClientRequest(ArrayList<Message> clientRequest) {
         this.clientRequest = clientRequest;
     }     
     
+    /**
+     *
+     * @return
+     */
     public String getItems() {
         return items;
     }
 
+    /**
+     *
+     * @param items
+     */
     public void setItems(String items) {
         this.items = items;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Items> getItemList() {
         return itemList;
     }
 
+    /**
+     *
+     * @param itemList
+     */
     public void setItemList(ArrayList<Items> itemList) {
         this.itemList = itemList;
     }

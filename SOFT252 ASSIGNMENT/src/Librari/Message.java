@@ -21,6 +21,14 @@ public class Message {
     private int receiverId;
     private String message;
 
+    /**
+     *
+     * @param requestMessage
+     * @param extensionMessage
+     * @param senderId
+     * @param receiverId
+     * @param message
+     */
     public Message(String requestMessage, String extensionMessage, int senderId, int receiverId, String message) {
         this.requestMessage = requestMessage;
         this.extensionMessage = extensionMessage;
@@ -29,42 +37,82 @@ public class Message {
         this.message = message;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getRequestMessage() {
         return requestMessage;
     }
 
+    /**
+     *
+     * @param requestMessage
+     */
     public void setRequestMessage(String requestMessage) {
         this.requestMessage = requestMessage;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getExtensionMessage() {
         return extensionMessage;
     }
 
+    /**
+     *
+     * @param extensionMessage
+     */
     public void setExtensionMessage(String extensionMessage) {
         this.extensionMessage = extensionMessage;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getSenderId() {
         return senderId;
     }
 
+    /**
+     *
+     * @param senderId
+     */
     public void setSenderId(int senderId) {
         this.senderId = senderId;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getReceiverId() {
         return receiverId;
     }
 
+    /**
+     *
+     * @param receiverId
+     */
     public void setReceiverId(int receiverId) {
         this.receiverId = receiverId;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     *
+     * @param message
+     */
     public void setMessage(String message) {
         this.message = message;
     }

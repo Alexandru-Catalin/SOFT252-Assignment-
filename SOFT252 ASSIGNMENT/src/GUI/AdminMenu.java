@@ -43,58 +43,108 @@ public class AdminMenu extends javax.swing.JFrame {
     private float rating;
     private Admin a;
  
-    
+    /**
+     *
+     * @return
+     */
     public ArrayList<Client> getClientLog() {
         return clientLog;
     }
 
+    /**
+     *
+     * @param clientLog
+     */
     public void setClientLog(ArrayList<Client> clientLog) {
         this.clientLog = clientLog;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Admin> getAdmminLog() {
         return admminLog;
     }
 
+    /**
+     *
+     * @param admminLog
+     */
     public void setAdmminLog(ArrayList<Admin> admminLog) {
         this.admminLog = admminLog;
     }
 
+    /**
+     *
+     */
     public void typeButton(){
         tg.add(jBook);
         tg.add(jDVD);
     }
     
+    /**
+     *
+     */
     public void groupButton(){
         bg.add(jRad1);
         bg.add(jRad2);
     }
 
+    /**
+     *
+     * @param admin
+     */
     public void setAdmin (Admin admin){
         a = admin;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Message> getMessageList() {
         return messageList;
     }
 
+    /**
+     *
+     * @param messageList
+     */
     public void setMessageList(ArrayList<Message> messageList) {
         this.messageList = messageList;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Message> getClientRequest() {
         return clientRequest;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Message> getNewsList() {
         return newsList;
     }
 
+    /**
+     *
+     * @param newsList
+     */
     public void setNewsList(ArrayList<Message> newsList) {
         this.newsList = newsList; 
     }
     
     //Saving the client message, to be displayed on adminMenu, admin beeing able to create the resource.
+
+    /**
+     *
+     * @param clientRequest
+     */
     public void setClientRequest(ArrayList<Message> clientRequest) {
         this.clientRequest = clientRequest;
         
@@ -107,7 +157,10 @@ public class AdminMenu extends javax.swing.JFrame {
         jResoursesField.setText(clientList);
     }
 
-    
+    /**
+     *
+     * @param l
+     */
     public AdminMenu(Login l) {
         
         initComponents();
@@ -119,11 +172,20 @@ public class AdminMenu extends javax.swing.JFrame {
   
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Items> getItemList() {
         return itemList;
     }
 
     //Saving the Books and DVDs in a list that is displayed on ClientMenu.
+
+    /**
+     *
+     * @param itemList
+     */
     public void setItemList(ArrayList<Items> itemList) {
         this.itemList = itemList;
         String itemData = "";
@@ -136,11 +198,18 @@ public class AdminMenu extends javax.swing.JFrame {
         jCheck.setText(itemData);
     }
   
+    /**
+     *
+     * @return
+     */
     public ArrayList<Message> getAdminMessage() {
         return adminMessage;
     }
 
-    
+    /**
+     *
+     * @param adminMessage
+     */
     public void setAdminMessage(ArrayList<Message> adminMessage) {
         this.adminMessage = adminMessage;
         

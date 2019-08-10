@@ -41,6 +41,10 @@ public class Login extends javax.swing.JFrame {
     
     
     //Creating the ressources and storing them.
+
+    /**
+     *
+     */
     public Login() {
         initComponents();
         
@@ -128,74 +132,146 @@ public class Login extends javax.swing.JFrame {
         adminMessage = (ArrayList<Message>) adminLt.readList();
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Items> getBorrowList() {
         return borrowList;
     }
 
+    /**
+     *
+     * @param borrowList
+     */
     public void setBorrowList(ArrayList<Items> borrowList) {
         this.borrowList = borrowList;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Items> getExtensionList() {
         return extensionList;
     }
 
+    /**
+     *
+     * @param extensionList
+     */
     public void setExtensionList(ArrayList<Items> extensionList) {
         this.extensionList = extensionList;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Client> getClientLog() {
         return clientLog;
     }
 
+    /**
+     *
+     * @param clientLog
+     */
     public void setClientLog(ArrayList<Client> clientLog) {
         this.clientLog = clientLog;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Admin> getAdminLog() {
         return adminLog;
     }
 
+    /**
+     *
+     * @param adminLog
+     */
     public void setAdminLog(ArrayList<Admin> adminLog) {
         this.adminLog = adminLog;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Message> getMessageList() {
         return messageList;
     }
 
+    /**
+     *
+     * @param messageList
+     */
     public void setMessageList(ArrayList<Message> messageList) {
         this.messageList = messageList;
     }
  
+    /**
+     *
+     * @return
+     */
     public ArrayList<Message> getClientRequest() {
         return clientRequest;
     }
 
+    /**
+     *
+     * @param clientRequest
+     */
     public void setClientRequest(ArrayList<Message> clientRequest) {
         this.clientRequest = clientRequest;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Message> getNewsList() {
         return newsList;
     }
 
+    /**
+     *
+     * @param newsList
+     */
     public void setNewsList(ArrayList<Message> newsList) {
         this.newsList = newsList;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Items> getItemList() {
         return itemList;
     }
 
+    /**
+     *
+     * @param itemList
+     */
     public void setItemList(ArrayList<Items> itemList) {
         this.itemList = itemList;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Message> getAdminMessage() {
         return adminMessage;
     }
 
+    /**
+     *
+     * @param adminMessage
+     */
     public void setAdminMessage(ArrayList<Message> adminMessage) {
         this.adminMessage = adminMessage;
     }

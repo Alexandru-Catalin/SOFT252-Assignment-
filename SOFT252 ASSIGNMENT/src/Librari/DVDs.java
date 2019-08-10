@@ -14,6 +14,14 @@ import Controller.State;
 //Creating DVDs subbclass extending Items superclass
 public class DVDs extends Items{
     
+    /**
+     *
+     * @param idNum
+     * @param name
+     * @param state
+     * @param rating
+     * @param extension
+     */
     public DVDs(int idNum, String name, State state, float rating, int extension) {
         super(idNum, name,  state, rating, extension);
         this.setCategory("DVD");

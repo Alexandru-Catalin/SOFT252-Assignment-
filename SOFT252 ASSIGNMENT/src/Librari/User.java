@@ -19,6 +19,13 @@ public abstract class User implements Observer, Serializable {
     private String firstName;
     private String lastName;
     
+    /**
+     *
+     * @param lID
+     * @param lPassword
+     * @param lFirstName
+     * @param lLastName
+     */
     public User (int lID, String lPassword, String lFirstName, String lLastName){
         id=lID;
         password = lPassword;
@@ -26,34 +33,66 @@ public abstract class User implements Observer, Serializable {
         lastName = lLastName;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getId(){
         return id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(int id){
         this.id = id;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getPassword(){
         return password;
     }
     
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password){
         this.password = password;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getFirstName(){
         return firstName;
     }
     
+    /**
+     *
+     * @param firstName
+     */
     public void setFirstName(String firstName){
         this.firstName = firstName;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getLastName(){
         return lastName;
     }
     
+    /**
+     *
+     * @param lastName
+     */
     public void setLastName(String lastName){
         this.lastName = lastName;
     }

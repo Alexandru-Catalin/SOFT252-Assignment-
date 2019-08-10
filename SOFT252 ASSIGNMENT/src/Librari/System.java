@@ -16,15 +16,26 @@ public class System {
     
     private LocalDate currentDate;
     
+    /**
+     *
+     */
     public System()
     {
         this.currentDate = LocalDate.now();
     }
 
+    /**
+     *
+     * @return
+     */
     public LocalDate getCurrentDate() {
         return currentDate;
     }
 
+    /**
+     *
+     * @param currentDate
+     */
     public void setCurrentDate(LocalDate currentDate) {
         this.currentDate = currentDate;
     }
